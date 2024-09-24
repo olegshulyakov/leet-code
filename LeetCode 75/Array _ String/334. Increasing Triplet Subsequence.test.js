@@ -38,33 +38,29 @@ Follow up: Could you implement a solution that runs in O(n) time complexity and 
 var increasingTriplet = function (nums) {
     if (nums.length < 3) return false;
 
+    let smallestNumber = nums[0];
     const pairs = new Array();
-    pairs.push([nums[0], Number.POSITIVE_INFINITY]);
+    pairs.push([nums[0], undefined]);
 
     for (let i = 1; i < nums.length; i++) {
+        const numberToCheck = nums[i];
+
         // Add new pair
-        if (nums[i] < pairs[0][0]) {
-            pairs.unshift([nums[i], Number.POSITIVE_INFINITY]);
+        if (numberToCheck < smallestNumber) {
+            pairs.unshift([numberToCheck, undefined]);
+            smallestNumber = numberToCheck;
             continue;
         }
 
-        for (const pair of pairs) {
-            // Check pair?
-            if (pair[0] > nums[i]) {
-                continue;
-            }
-
-            // Check if nums[i] is last number in triple
-            if (Number.isFinite(pair[1]) && pair[1] < nums[i]) {
-                return true;
-            }
-
-            // Replace second number in pair
-            if (pair[0] < nums[i] && (!Number.isFinite(pair[1]) || nums[i] < pair[1])) {
-                pair[1] = nums[i];
-            }
+        // Check if nums[i] is last number in triple
+        if (pairs.some(pair => pair[1] !== undefined && pair[1] < numberToCheck)) {
+            return true;
         }
+
+        // Replace second number in pair
+        pairs.filter(pair => pair[0] < numberToCheck && (pair[1] === undefined || numberToCheck < pair[1])).forEach(pair => pair[1] = numberToCheck);
     }
+
     return false;
 };
 
@@ -76,6 +72,7 @@ describe('334. Increasing Triplet Subsequence', () => {
     test('[1, 2]', () => expect(increasingTriplet([1, 2])).toEqual(false));
     test('[1, 3, 2, 4]', () => expect(increasingTriplet([1, 3, 2, 4])).toEqual(true));
     test('[20, 100, 10, 12, 5, 13]', () => expect(increasingTriplet([20, 100, 10, 12, 5, 13])).toEqual(true));
+    test('[1, 1, -2, 6]', () => expect(increasingTriplet([1, 1, -2, 6])).toEqual(false));
 
     test('Array(50).fill(1)', () => expect(increasingTriplet(Array(50).fill(1))).toEqual(false));
 })
