@@ -42,14 +42,13 @@ var increasingTriplet = function (nums) {
     pairs.push([nums[0], Number.POSITIVE_INFINITY]);
 
     for (let i = 1; i < nums.length; i++) {
-        let isSmallest = true;
+        // Add new pair
+        if (nums[i] < pairs[0][0]) {
+            pairs.unshift([nums[i], Number.POSITIVE_INFINITY]);
+            continue;
+        }
 
         for (const pair of pairs) {
-            // Check weither need to add new pair at the end
-            if (pair[0] <= nums[i]) {
-                isSmallest = false;
-            }
-
             // Check pair?
             if (pair[0] > nums[i]) {
                 continue;
@@ -65,13 +64,7 @@ var increasingTriplet = function (nums) {
                 pair[1] = nums[i];
             }
         }
-
-        // Add new pair
-        if (isSmallest) {
-            pairs.push([nums[i], Number.POSITIVE_INFINITY]);
-        }
     }
-
     return false;
 };
 
