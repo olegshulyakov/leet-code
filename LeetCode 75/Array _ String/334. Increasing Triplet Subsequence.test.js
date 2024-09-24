@@ -39,22 +39,15 @@ var increasingTriplet = function (nums) {
     if (nums.length < 3) return false;
 
     for (let j = 1; j < nums.length - 1; j++) {
-        let isFound = false;
-        for (let i = j - 1; i >= 0; i--) {
-            if (nums[i] < nums[j]) {
-                isFound = true;
-                break;
-            }
-        }
-        if (!isFound) {
+        if (nums.slice(0, j).find(el => el < nums[j]) === undefined) {
             continue;
         }
 
-        for (let k = j + 1; k < nums.length; k++) {
-            if (nums[j] < nums[k]) {
-                return true;
-            }
+        if (nums.slice(j + 1, nums.length).find(el => el > nums[j]) === undefined) {
+            continue;
         }
+
+        return true;
     }
     return false;
 };
