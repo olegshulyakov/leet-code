@@ -38,17 +38,40 @@ Follow up: Could you implement a solution that runs in O(n) time complexity and 
 var increasingTriplet = function (nums) {
     if (nums.length < 3) return false;
 
-    for (let j = 1; j < nums.length - 1; j++) {
-        if (nums.slice(0, j).find(el => el < nums[j]) === undefined) {
-            continue;
+    const pairs = new Array();
+    pairs.push([nums[0], Number.POSITIVE_INFINITY]);
+
+    for (let i = 1; i < nums.length; i++) {
+        let isSmallest = true;
+
+        for (const pair of pairs) {
+            // Check weither need to add new pair at the end
+            if (pair[0] <= nums[i]) {
+                isSmallest = false;
+            }
+
+            // Check pair?
+            if (pair[0] > nums[i]) {
+                continue;
+            }
+
+            // Check if nums[i] is last number in triple
+            if (Number.isFinite(pair[1]) && pair[1] < nums[i]) {
+                return true;
+            }
+
+            // Replace second number in pair
+            if (pair[0] < nums[i] && (!Number.isFinite(pair[1]) || nums[i] < pair[1])) {
+                pair[1] = nums[i];
+            }
         }
 
-        if (nums.slice(j + 1, nums.length).find(el => el > nums[j]) === undefined) {
-            continue;
+        // Add new pair
+        if (isSmallest) {
+            pairs.push([nums[i], Number.POSITIVE_INFINITY]);
         }
-
-        return true;
     }
+
     return false;
 };
 
