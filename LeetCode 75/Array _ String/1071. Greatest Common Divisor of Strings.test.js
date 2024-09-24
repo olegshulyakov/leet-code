@@ -1,4 +1,4 @@
-/**
+/*
 
 For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).
 
@@ -55,7 +55,7 @@ function gcdOfStrings(str1, str2) {
 };
 
 describe("1071. Greatest Common Divisor of Strings", () => {
-    test('"ABCABC", "ABC"', () => expect(gcdOfStrings("ABCABC", "ABC")).toBe("ABC"));
-    test('"ABABAB", "ABAB"', () => expect(gcdOfStrings("ABABAB", "ABAB")).toBe("AB"));
-    test('"LEET", "CODE"', () => expect(gcdOfStrings("LEET", "CODE")).toBe(""));
+    test('"ABCABC", "ABC"', () => expect(gcdOfStrings("ABCABC", "ABC")).toEqual("ABC"));
+    test('"ABABAB", "ABAB"', () => expect(gcdOfStrings("ABABAB", "ABAB")).toEqual("AB"));
+    test('"LEET", "CODE"', () => expect(gcdOfStrings("LEET", "CODE")).toEqual(""));
 })
