@@ -1,0 +1,25 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Leet Code Solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olegshulyakov/leet-code.git"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "Oleg Shulyakov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/olegshulyakov/leet-code/issues"
+  },
+  "homepage": "https://github.com/olegshulyakov/leet-code#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
