@@ -40,10 +40,7 @@ var maxArea = function (height) {
     }
 
     let areaSize = 0,
-        left = -1,
-        right = -1,
-        leftIndex = -1,
-        rightIndex = -1;
+        left = -1;
 
     for (let i = 0; i < height.length - 1; i++) {
         // Check if it is worth increasing
@@ -60,9 +57,6 @@ var maxArea = function (height) {
 
             // Save temp results
             left = height[i];
-            right = height[j];
-            leftIndex = i;
-            rightIndex = j;
             areaSize = tempAreaSize;
         }
     }
