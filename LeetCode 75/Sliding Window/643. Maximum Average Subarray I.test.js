@@ -35,15 +35,10 @@ var findMaxAverage = function (nums, k) {
         return 0;
     }
 
-    let sum = 0, temp = 0;
+    let sum = temp = 0;
     for (let i = 0; i < nums.length; i++) {
-        if (i < k) {
-            sum += nums[i];
-            temp += nums[i];
-        } else {
-            temp = temp - nums[i - k] + nums[i];
-            sum = Math.max(sum, temp);
-        }
+        temp += i < k ? nums[i] : nums[i] - nums[i - k];
+        sum = i < k ? temp : sum > temp ? sum : temp;
     }
 
     return sum / k;
