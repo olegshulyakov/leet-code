@@ -40,28 +40,16 @@ var maxArea = function (height) {
     }
 
     let areaSize = 0,
-        left = -1;
+        i = 0,
+        j = height.length - 1;
 
-    for (let i = 0; i < height.length - 1; i++) {
-        // Check if it is worth increasing
-        if (height[i] === 0 || i > 0 && height[i] <= left) {
-            continue;
-        }
+    while (i < j) {
+        areaSize = Math.max(areaSize, Math.min(height[i], height[j]) * (j - i));
 
-        // Find right side
-        for (let j = i + 1; j < height.length; j++) {
-            if (height[j] === 0 && height[j] < height[j + 1]) {
-                continue;
-            }
-
-            const tempAreaSize = Math.min(height[i], height[j]) * (j - i);
-            if (tempAreaSize <= areaSize) {
-                continue;
-            }
-
-            // Save temp results
-            left = height[i];
-            areaSize = tempAreaSize;
+        if (height[i] < height[j]) {
+            i++;
+        } else {
+            j--;
         }
     }
 
