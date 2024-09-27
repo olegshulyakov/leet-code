@@ -23,7 +23,7 @@ Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 < nums[4] == 4 
 
 Constraints:
 
-1 <= nums.length <= 5 * 105
+1 <= nums.length <= 5 * 10^5
 -231 <= nums[i] <= 231 - 1
 
 
