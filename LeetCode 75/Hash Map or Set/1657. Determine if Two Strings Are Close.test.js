@@ -68,24 +68,24 @@ var closeStrings = function (word1, word2) {
     const map2 = getMapCharToCount(word2);
 
     // Step 2. Check that both string contains of same characters
-    for (const c of map1.keys()) {
+    for (const [c] of map1) {
         if (!map2.has(c)) {
             return false;
         }
     }
-    for (const c of map2.keys()) {
+    for (const [c] of map2) {
         if (!map1.has(c)) {
             return false;
         }
     }
 
     // Step 3. Find two symbols that have same count in both words and filter them
-    for (const pair1 of map1.entries()) {
+    for (const [char1, count1] of map1) {
         let isFound = false;
-        for (const pair2 of map2.entries()) {
-            if (pair2[1] === pair1[1]) {
-                map1.delete(pair1[0]);
-                map2.delete(pair2[0]);
+        for (const [char2, count2] of map2) {
+            if (count1 === count2) {
+                map1.delete(char1);
+                map2.delete(char2);
                 isFound = true;
                 break;
             }
