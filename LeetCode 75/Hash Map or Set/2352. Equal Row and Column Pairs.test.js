@@ -37,24 +37,28 @@ n == grid.length == grid[i].length
  * @return {number}
  */
 var equalPairs = function (grid) {
-    let pairCount = 0;
-    for (let row = 0; row < grid.length; row++) {
-        for (let column = 0; column < grid.length; column++) {
-            const rowSet = new Array();
-            const columnSet = new Array();
-            for (let i = 0; i < grid.length; i++) {
-                rowSet.push(grid[row][i]);
-                columnSet.push(grid[i][column]);
-            }
+    let pairCnt = 0;
+    const rows = new Set();
+    const cols = new Set();
+    for (let i = 0; i < grid.length; i++) {
+        const row = [];
+        const column = [];
+        for (let j = 0; j < grid.length; j++) {
+            row.push(grid[j][i]);
+            column.push(grid[i][j]);
+        }
+        rows.add(row);
+        cols.add(column);
+    }
 
-            if (rowSet.every((e, i) => e === columnSet[i])) {
-                pairCount++;
-            }
+    for (const row of rows) {
+        for (const col of cols) {
+            if (row.some((e, i) => e !== col[i])) continue;
+            pairCnt++;
         }
     }
 
-
-    return pairCount;
+    return pairCnt;
 };
 
 describe('2352. Equal Row and Column Pairs', () => {
