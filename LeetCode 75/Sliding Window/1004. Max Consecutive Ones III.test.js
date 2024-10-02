@@ -51,9 +51,11 @@ var longestOnes = function (nums, k) {
 };
 
 describe('1004. Max Consecutive Ones III', () => {
-    test('[1, 1, 1], 2', () => expect(longestOnes([1, 1, 1], 2)).toEqual(3));
-    test('[1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2', () => expect(longestOnes([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2)).toEqual(6));
-    test('[0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3', () => expect(longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3)).toEqual(10));
-    test('[0 .. 0], 2', () => expect(longestOnes(new Array(10).fill(0), 2)).toEqual(2));
-    test('[0 .. 0], 10', () => expect(longestOnes(new Array(10).fill(0), 10)).toEqual(10));
+    test.each([
+        { nums: [1, 1, 1], k: 2, expected: 3 },
+        { nums: [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], k: 2, expected: 6 },
+        { nums: [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], k: 3, expected: 10 },
+        { nums: new Array(10).fill(0), k: 2, expected: 2 },
+        { nums: new Array(10).fill(0), k: 10, expected: 10 },
+    ])('$nums, $k', ({ nums, k, expected }) => expect(longestOnes(nums, k)).toEqual(expected));
 })

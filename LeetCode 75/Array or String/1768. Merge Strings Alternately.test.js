@@ -53,7 +53,9 @@ function mergeAlternately(word1, word2) {
 };
 
 describe("1768. Merge Strings Alternately", () => {
-    test('"abc", "pqr"', () => expect(mergeAlternately("abc", "pqr")).toEqual("apbqcr"));
-    test('"ab", "pqrs"', () => expect(mergeAlternately("ab", "pqrs")).toEqual("apbqrs"));
-    test('"abcd", "pq"', () => expect(mergeAlternately("abcd", "pq")).toEqual("apbqcd"));
+    test.each([
+        { word1: "abc", word2: "pqr", expected: "apbqcr" },
+        { word1: "ab", word2: "pqrs", expected: "apbqrs" },
+        { word1: "abcd", word2: "pq", expected: "apbqcd" },
+    ])('$word1, $word2', ({ word1, word2, expected }) => expect(mergeAlternately(word1, word2)).toEqual(expected));
 })

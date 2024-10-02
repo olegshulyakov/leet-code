@@ -48,7 +48,9 @@ var productExceptSelf = function (nums) {
 };
 
 describe('238. Product of Array Except Self', () => {
-    test('[1, 2, 3, 4]', () => expect(productExceptSelf([1, 2, 3, 4])).toEqual([24, 12, 8, 6]));
-    test('[-1, 1, 0, -3, 3]', () => expect(productExceptSelf([-1, 1, 0, -3, 3])).toEqual([0, 0, 9, 0, 0]));
-    test('[-1, 1, 0, 0, 3]', () => expect(productExceptSelf([-1, 1, 0, 0, 3])).toEqual([0, 0, 0, 0, 0]));
+    test.each([
+        { nums: [1, 2, 3, 4], expected: [24, 12, 8, 6] },
+        { nums: [-1, 1, 0, -3, 3], expected: [0, 0, 9, 0, 0] },
+        { nums: [-1, 1, 0, 0, 3], expected: [0, 0, 0, 0, 0] },
+    ])('$nums', ({ nums, expected }) => expect(productExceptSelf(nums)).toEqual(expected));
 })

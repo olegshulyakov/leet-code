@@ -56,7 +56,9 @@ var longestSubarray = function (nums) {
 };
 
 describe('1493. Longest Subarray of ones After Deleting One Element', () => {
-    test('[1, 1, 0, 1]', () => expect(longestSubarray([1, 1, 0, 1])).toEqual(3));
-    test('[0, 1, 1, 1, 0, 1, 1, 0, 1]', () => expect(longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1])).toEqual(5));
-    test('[1, 1, 1]', () => expect(longestSubarray([1, 1, 1])).toEqual(2));
+    test.each([
+        { nums: [1, 1, 0, 1], expected: 3 },
+        { nums: [0, 1, 1, 1, 0, 1, 1, 0, 1], expected: 5 },
+        { nums: [1, 1, 1], expected: 2 },
+    ])('$nums', ({ nums, expected }) => expect(longestSubarray(nums)).toEqual(expected));
 })

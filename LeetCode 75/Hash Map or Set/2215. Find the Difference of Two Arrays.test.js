@@ -44,6 +44,8 @@ var findDifference = function (nums1, nums2) {
 };
 
 describe('2215. Find the Difference of Two Arrays', () => {
-    test('[1, 2, 3], [2, 4, 6]', () => expect(findDifference([1, 2, 3], [2, 4, 6])).toEqual([[1, 3], [4, 6]]));
-    test('[1, 2, 3, 3], [1, 1, 2, 2]', () => expect(findDifference([1, 2, 3, 3], [1, 1, 2, 2])).toEqual([[3], []]));
+    test.each([
+        { nums1: [1, 2, 3], nums2: [2, 4, 6], expected: [[1, 3], [4, 6]] },
+        { nums1: [1, 2, 3, 3], nums2: [1, 1, 2, 2], expected: [[3], []] },
+    ])('$nums1, $nums2', ({ nums1, nums2, expected }) => expect(findDifference(nums1, nums2)).toEqual(expected));
 })

@@ -52,7 +52,9 @@ var maxVowels = function (s, k) {
 };
 
 describe('1456. Maximum Number of Vowels in a Substring of Given Length', () => {
-    test('"abciiidef", 3', () => expect(maxVowels("abciiidef", 3)).toEqual(3));
-    test('"aeiou", 2', () => expect(maxVowels("aeiou", 2)).toEqual(2));
-    test('"leetcode", 3', () => expect(maxVowels("leetcode", 3)).toEqual(2));
+    test.each([
+        { s: "abciiidef", k: 3, expected: 3 },
+        { s: "aeiou", k: 2, expected: 2 },
+        { s: "leetcode", k: 3, expected: 2 },
+    ])('$s, $k', ({ s, k, expected }) => expect(maxVowels(s, k)).toEqual(expected));
 })

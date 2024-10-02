@@ -45,8 +45,10 @@ var findMaxAverage = function (nums, k) {
 };
 
 describe('643. Maximum Average Subarray I', () => {
-    test('[1, 12, -5, -6, 50, 3], 4', () => expect(findMaxAverage([1, 12, -5, -6, 50, 3], 4)).toEqual(12.75));
-    test('[5], 1', () => expect(findMaxAverage([5], 1)).toEqual(5));
-    test('[0, 1, 1, 3, 3], 4', () => expect(findMaxAverage([0, 1, 1, 3, 3], 4)).toEqual(2));
-    test('[0, 4, 0, 3, 2], 1', () => expect(findMaxAverage([0, 4, 0, 3, 2], 1)).toEqual(4));
+    test.each([
+        { nums: [1, 12, -5, -6, 50, 3], k: 4, expected: 12.75 },
+        { nums: [5], k: 1, expected: 5 },
+        { nums: [0, 1, 1, 3, 3], k: 4, expected: 2 },
+        { nums: [0, 4, 0, 3, 2], k: 1, expected: 4 },
+    ])('$nums, $k', ({ nums, k, expected }) => expect(findMaxAverage(nums, k)).toEqual(expected));
 })

@@ -53,7 +53,9 @@ var reverseWords = function (s) {
 };
 
 describe('151. Reverse Words in a String', () => {
-    test('"the sky is blue"', () => expect(reverseWords("the sky is blue")).toEqual("blue is sky the"));
-    test('"  hello world  "', () => expect(reverseWords("  hello world  ")).toEqual("world hello"));
-    test('"a good   example"', () => expect(reverseWords("a good   example")).toEqual("example good a"));
+    test.each([
+        { s: "the sky is blue", expected: "blue is sky the" },
+        { s: "  hello world  ", expected: "world hello" },
+        { s: "a good   example", expected: "example good a" },
+    ])('$s', ({ s, expected }) => expect(reverseWords(s)).toEqual(expected));
 })

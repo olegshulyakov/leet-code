@@ -44,6 +44,8 @@ var isSubsequence = function (s, t) {
 };
 
 describe('392. Is Subsequence', () => {
-    test('"abc", "ahbgdc"', () => expect(isSubsequence("abc", "ahbgdc")).toEqual(true));
-    test('"axc", "ahbgdc"', () => expect(isSubsequence("axc", "ahbgdc")).toEqual(false));
+    test.each([
+        { s: "abc", t: "ahbgdc", expected: true },
+        { s: "axc", t: "ahbgdc", expected: false },
+    ])('$s, $t', ({ s, t, expected }) => expect(isSubsequence(s, t)).toEqual(expected));
 })

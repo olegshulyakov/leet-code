@@ -65,14 +65,15 @@ var increasingTriplet = function (nums) {
 };
 
 describe('334. Increasing Triplet Subsequence', () => {
-    test('[1, 2, 3, 4, 5]', () => expect(increasingTriplet([1, 2, 3, 4, 5])).toEqual(true));
-    test('[5, 4, 3, 2, 1]', () => expect(increasingTriplet([5, 4, 3, 2, 1])).toEqual(false));
-    test('[2, 1, 5, 0, 4, 6]', () => expect(increasingTriplet([2, 1, 5, 0, 4, 6])).toEqual(true));
-    test('[1, 2, 3]', () => expect(increasingTriplet([1, 2, 3])).toEqual(true));
-    test('[1, 2]', () => expect(increasingTriplet([1, 2])).toEqual(false));
-    test('[1, 3, 2, 4]', () => expect(increasingTriplet([1, 3, 2, 4])).toEqual(true));
-    test('[20, 100, 10, 12, 5, 13]', () => expect(increasingTriplet([20, 100, 10, 12, 5, 13])).toEqual(true));
-    test('[1, 1, -2, 6]', () => expect(increasingTriplet([1, 1, -2, 6])).toEqual(false));
-
-    test('Array(50).fill(1)', () => expect(increasingTriplet(Array(50).fill(1))).toEqual(false));
+    test.each([
+        { nums: [1, 2, 3, 4, 5], expected: true },
+        { nums: [5, 4, 3, 2, 1], expected: false },
+        { nums: [2, 1, 5, 0, 4, 6], expected: true },
+        { nums: [1, 2, 3], expected: true },
+        { nums: [1, 2], expected: false },
+        { nums: [1, 3, 2, 4], expected: true },
+        { nums: [20, 100, 10, 12, 5, 13], expected: true },
+        { nums: [1, 1, -2, 6], expected: false },
+        { nums: Array(50).fill(1), expected: false },
+    ])('$nums', ({ nums, expected }) => expect(increasingTriplet(nums)).toEqual(expected));
 })

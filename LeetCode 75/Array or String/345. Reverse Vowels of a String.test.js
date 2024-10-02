@@ -50,6 +50,8 @@ function reverseVowels(s) {
 };
 
 describe('345. Reverse Vowels of a String', () => {
-    test('"IceCreAm"', () => expect(reverseVowels("IceCreAm")).toEqual("AceCreIm"));
-    test('"leetcode"', () => expect(reverseVowels("leetcode")).toEqual("leotcede"));
+    test.each([
+        { s: "IceCreAm", expected: "AceCreIm" },
+        { s: "leetcode", expected: "leotcede" },
+    ])('$s', ({ s, expected }) => expect(reverseVowels(s)).toEqual(expected));
 })

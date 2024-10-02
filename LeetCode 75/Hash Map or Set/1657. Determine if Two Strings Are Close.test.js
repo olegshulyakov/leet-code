@@ -99,9 +99,11 @@ var closeStrings = function (word1, word2) {
 };
 
 describe('1657. Determine if Two Strings Are Close', () => {
-    test('"abc", "bca"', () => expect(closeStrings("abc", "bca")).toEqual(true));
-    test('"a", "aa"', () => expect(closeStrings("a", "aa")).toEqual(false));
-    test('"cabbba", "abbccc"', () => expect(closeStrings("cabbba", "abbccc")).toEqual(true));
-    test('"abc", "dca"', () => expect(closeStrings("abc", "dca")).toEqual(false));
-    test('"ccbbaa", "abbccc"', () => expect(closeStrings("ccbbaa", "abbccc")).toEqual(false));
+    test.each([
+        { word1: "abc", word2: "bca", expected: true },
+        { word1: "a", word2: "aa", expected: false },
+        { word1: "cabbba", word2: "abbccc", expected: true },
+        { word1: "abc", word2: "dca", expected: false },
+        { word1: "ccbbaa", word2: "abbccc", expected: false },
+    ])('$word1, $word2', ({ word1, word2, expected }) => expect(closeStrings(word1, word2)).toEqual(expected));
 })

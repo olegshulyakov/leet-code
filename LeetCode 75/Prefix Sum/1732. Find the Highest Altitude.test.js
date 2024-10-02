@@ -40,6 +40,8 @@ var largestAltitude = function (gain) {
 };
 
 describe('1732. Find the Highest Altitude', () => {
-    test('[-5, 1, 5, 0, -7]', () => expect(largestAltitude([-5, 1, 5, 0, -7])).toEqual(1));
-    test('[-4, -3, -2, -1, 4, 3, 2]', () => expect(largestAltitude([-4, -3, -2, -1, 4, 3, 2])).toEqual(0));
+    test.each([
+        { gain: [-5, 1, 5, 0, -7], expected: 1 },
+        { gain: [-4, -3, -2, -1, 4, 3, 2], expected: 0 },
+    ])('$gain', ({ gain, expected }) => expect(largestAltitude(gain)).toEqual(expected));
 })

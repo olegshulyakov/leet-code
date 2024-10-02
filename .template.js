@@ -14,5 +14,7 @@ function func(s) {
 }
 
 describe('', () => {
-    test('', () => expect(func("")).toEqual(""));
+    test.each([
+        { nums: [], expected: [] },
+    ])('$nums', ({ nums, expected }) => expect(func(nums)).toEqual(expected));
 })

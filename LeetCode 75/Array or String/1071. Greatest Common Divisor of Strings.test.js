@@ -55,7 +55,9 @@ function gcdOfStrings(str1, str2) {
 };
 
 describe("1071. Greatest Common Divisor of Strings", () => {
-    test('"ABCABC", "ABC"', () => expect(gcdOfStrings("ABCABC", "ABC")).toEqual("ABC"));
-    test('"ABABAB", "ABAB"', () => expect(gcdOfStrings("ABABAB", "ABAB")).toEqual("AB"));
-    test('"LEET", "CODE"', () => expect(gcdOfStrings("LEET", "CODE")).toEqual(""));
+    test.each([
+        { str1: "ABCABC", str2: "ABC", expected: "ABC" },
+        { str1: "ABABAB", str2: "ABAB", expected: "AB" },
+        { str1: "LEET", str2: "CODE", expected: "" },
+    ])('$str1, $str2', ({ str1, str2, expected }) => expect(gcdOfStrings(str1, str2)).toEqual(expected));
 })

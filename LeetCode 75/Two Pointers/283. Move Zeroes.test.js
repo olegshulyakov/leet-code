@@ -49,6 +49,8 @@ var moveZeroes = function (nums) {
 };
 
 describe('283. Move Zeroes', () => {
-    test('[0, 1, 0, 3, 12]', () => expect(moveZeroes([0, 1, 0, 3, 12])).toEqual([1, 3, 12, 0, 0]));
-    test('[0]', () => expect(moveZeroes([0])).toEqual([0]));
+    test.each([
+        { nums: [0, 1, 0, 3, 12], expected: [1, 3, 12, 0, 0] },
+        { nums: [0], expected: [0] },
+    ])('$nums', ({ nums, expected }) => expect(moveZeroes(nums)).toEqual(expected));
 })

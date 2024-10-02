@@ -43,6 +43,8 @@ function canPlaceFlowers(flowerbed, n) {
 };
 
 describe('605. Can Place Flowers', () => {
-    test('[1, 0, 0, 0, 1], 1', () => expect(canPlaceFlowers([1, 0, 0, 0, 1], 1)).toEqual(true));
-    test('[1, 0, 0, 0, 1], 2', () => expect(canPlaceFlowers([1, 0, 0, 0, 1], 2)).toEqual(false));
+    test.each([
+        { flowerbed: [1, 0, 0, 0, 1], n: 1, expected: true },
+        { flowerbed: [1, 0, 0, 0, 1], n: 2, expected: false },
+    ])('$flowerbed, $n', ({ flowerbed, n, expected }) => expect(canPlaceFlowers(flowerbed, n)).toEqual(expected));
 });

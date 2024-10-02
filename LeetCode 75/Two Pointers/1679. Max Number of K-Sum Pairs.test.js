@@ -72,8 +72,10 @@ var maxOperations = function (nums, k) {
 };
 
 describe('1679. Max Number of K-Sum Pairs', () => {
-    test('[1, 2, 3, 4], 5', () => expect(maxOperations([1, 2, 3, 4], 5)).toEqual(2));
-    test('[3, 1, 3, 4, 3], 6', () => expect(maxOperations([3, 1, 3, 4, 3], 6)).toEqual(1));
-    test('[[2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2], 3', () => expect(maxOperations([2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2], 3)).toEqual(4));
-    test('[5000000 .. 5000000], 10000000', () => expect(maxOperations(new Array(10000).fill(5000000), 10000000)).toEqual(5000));
+    test.each([
+        { nums: [1, 2, 3, 4], k: 5, expected: 2 },
+        { nums: [3, 1, 3, 4, 3], k: 6, expected: 1 },
+        { nums: [2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2], k: 3, expected: 4 },
+        { nums: Array(10000).fill(5000000), k: 10000000, expected: 5000 },
+    ])('$nums, $k', ({ nums, k, expected }) => expect(maxOperations(nums, k)).toEqual(expected));
 })

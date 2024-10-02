@@ -47,7 +47,9 @@ function kidsWithCandies(candies, extraCandies) {
 };
 
 describe('1431. Kids With the Greatest Number of Candies', () => {
-    test('[2, 3, 5, 1, 3], 3', () => expect(kidsWithCandies([2, 3, 5, 1, 3], 3)).toEqual([true, true, true, false, true]));
-    test('[4, 2, 1, 1, 2], 1', () => expect(kidsWithCandies([4, 2, 1, 1, 2], 1)).toEqual([true, false, false, false, false]));
-    test('[12, 1, 12], 10', () => expect(kidsWithCandies([12, 1, 12], 10)).toEqual([true, false, true]));
+    test.each([
+        { candies: [2, 3, 5, 1, 3], extraCandies: 3, expected: [true, true, true, false, true] },
+        { candies: [4, 2, 1, 1, 2], extraCandies: 1, expected: [true, false, false, false, false] },
+        { candies: [12, 1, 12], extraCandies: 10, expected: [true, false, true] },
+    ])('$candies, $extraCandies', ({ candies, extraCandies, expected }) => expect(kidsWithCandies(candies, extraCandies)).toEqual(expected));
 })

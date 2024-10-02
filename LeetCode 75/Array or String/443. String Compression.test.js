@@ -76,7 +76,9 @@ var compress = function (chars) {
 };
 
 describe('443. String Compression', () => {
-    test('["a", "a", "b", "b", "c", "c", "c"]', () => expect(compress(["a", "a", "b", "b", "c", "c", "c"])).toEqual(6));
-    test('["a"]', () => expect(compress(["a"])).toEqual(1));
-    test('["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]', () => expect(compress(["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"])).toEqual(4));
+    test.each([
+        { chars: ["a", "a", "b", "b", "c", "c", "c"], expected: 6 },
+        { chars: ["a"], expected: 1 },
+        { chars: ["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"], expected: 4 },
+    ])('$chars', ({ chars, expected }) => expect(compress(chars)).toEqual(expected));
 })
