@@ -44,9 +44,9 @@ The operation above can be performed on s.
  */
 var removeStars = function (s) {
     const res = [];
-    for (const ch of s) {
-        if (ch === '*') res.pop();
-        else res.push(ch);
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === '*') res.pop();
+        else res.push(s[i]);
     }
     return res.join('');
 };
