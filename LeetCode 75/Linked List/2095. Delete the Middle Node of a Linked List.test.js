@@ -43,15 +43,7 @@ The number of nodes in the list is in the range [1, 10^5].
 
 */
 
-/**
- * Definition for singly-linked list.
- * @param {number} val
- * @param {ListNode} next
- */
-function ListNode(val, next) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
-}
+const ListNode = require('./ListNode');
 
 /**
  * @param {ListNode} head
@@ -89,20 +81,6 @@ describe('2095. Delete the Middle Node of a Linked List', () => {
         { nums: [2, 1], expected: [2] },
         { nums: [1], expected: [] },
     ])('$nums', ({ nums, expected }) => {
-        // Generate list
-        let head = undefined;
-        for (let i = nums.length - 1; i >= 0; i--) {
-            head = new ListNode(nums[i], head);
-        }
-
-        let pointer = deleteMiddle(head);
-        // Convert list to array
-        const res = [];
-        while (pointer != null) {
-            res.push(pointer.val);
-            pointer = pointer.next;
-        }
-
-        expect(res).toEqual(expected);
+        expect(ListNode.toArray(deleteMiddle(ListNode.from(nums)))).toEqual(expected);
     });
 })
