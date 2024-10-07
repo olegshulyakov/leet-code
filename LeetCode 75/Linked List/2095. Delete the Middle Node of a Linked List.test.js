@@ -80,7 +80,5 @@ describe('2095. Delete the Middle Node of a Linked List', () => {
         { nums: [1, 2, 3, 4], expected: [1, 2, 4] },
         { nums: [2, 1], expected: [2] },
         { nums: [1], expected: [] },
-    ])('$nums', ({ nums, expected }) => {
-        expect(ListNode.toArray(deleteMiddle(ListNode.from(nums)))).toEqual(expected);
-    });
+    ])('$nums', ({ nums, expected }) => expect(ListNode.toArray(deleteMiddle(ListNode.from(nums)))).toEqual(expected));
 })
