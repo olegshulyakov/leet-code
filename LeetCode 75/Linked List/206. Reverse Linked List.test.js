@@ -44,11 +44,8 @@ var reverseList = function (head) {
         const temp = current.next;
         current.next = previous;
         previous = current;
-        if (temp == null) {
-            return current;
-        } else {
-            current = temp;
-        }
+        if (temp == null) return current;
+        current = temp;
     }
     return head;
 };
