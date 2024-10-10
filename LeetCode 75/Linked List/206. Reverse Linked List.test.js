@@ -38,20 +38,14 @@ const ListNode = require('./ListNode');
  * @return {ListNode}
  */
 var reverseList = function (head) {
-    if (head == null || head.next == null) {
-        return head;
-    }
-
-    let current = new ListNode(head.val, head.next),
-        previous = null,
-        temp = null;
+    let current = head,
+        previous = null;
     while (current != null) {
-        temp = current.next;
+        const temp = current.next;
         current.next = previous;
         previous = current;
         if (temp == null) {
-            head = current;
-            current = null;
+            return current;
         } else {
             current = temp;
         }
