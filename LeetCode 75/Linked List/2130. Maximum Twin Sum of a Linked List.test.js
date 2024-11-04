@@ -47,21 +47,33 @@ The number of nodes in the list is an even integer in the range [2, 10^5].
 const ListNode = require('./ListNode');
 
 /**
+ * Reverse linked list
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+function reverse(head) {
+    let prev = null;
+    let current = new ListNode(head.val, head.next);
+    while (current) {
+        let next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next != null ? new ListNode(next.val, next.next) : null;
+    }
+    return prev;
+}
+/**
  * @param {ListNode} head
  * @return {number}
  */
 var pairSum = function (head) {
-    let cursor = head;
-    const arr = [];
-    while (cursor) {
-        arr.push(cursor.val);
-        cursor = cursor.next;
-    }
-
     let max = Number.NEGATIVE_INFINITY;
-    for (let i = 0; i <= (arr.length / 2) - 1; i++) {
-        const sum = arr[i] + arr[arr.length - 1 - i];
+    let tail = reverse(head);
+    while (head != null && tail != null) {
+        const sum = head.val + tail.val;
         max = sum > max ? sum : max;
+        head = head.next;
+        tail = tail.next;
     }
     return max;
 };
@@ -71,5 +83,6 @@ describe('2130. Maximum Twin Sum of a Linked List', () => {
         { nums: [5, 4, 2, 1], expected: 6 },
         { nums: [4, 2, 2, 3], expected: 7 },
         { nums: [1, 100000], expected: 100001 },
+        { nums: [47, 22, 81, 46, 94, 95, 90, 22, 55, 91, 6, 83, 49, 65, 10, 32, 41, 26, 83, 99, 14, 85, 42, 99, 89, 69, 30, 92, 32, 74, 9, 81, 5, 9], expected: 182 },
     ])('$nums', ({ nums, expected }) => expect(pairSum(ListNode.from(nums))).toEqual(expected));
 })
