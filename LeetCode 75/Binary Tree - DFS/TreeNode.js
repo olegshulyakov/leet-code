@@ -19,20 +19,23 @@ class TreeNode {
     static from(nums) {
         if (!nums.length) return null;
 
-        const treeNodes = nums.map(val => val === null ? null : new TreeNode(val));
+        const nodes = nums.map((val, i) => {
+            if (val === null || nums.indexOf(val) < i) return null;
+            return new TreeNode(val)
+        });
 
         let i = 0;
-        while (2 * i + 1 < treeNodes.length) {
-            if (treeNodes[2 * i + 1]) {
-                treeNodes[i].left = treeNodes[2 * i + 1];
+        while (2 * i + 1 < nodes.length) {
+            if (nodes[2 * i + 1]) {
+                nodes[i].left = nodes[2 * i + 1];
             }
-            if (treeNodes[2 * i + 2]) {
-                treeNodes[i].right = treeNodes[2 * i + 2];
+            if (nodes[2 * i + 2]) {
+                nodes[i].right = nodes[2 * i + 2];
             }
             i++;
         }
 
-        return treeNodes[0];
+        return nodes[0];
     }
 
     /**
