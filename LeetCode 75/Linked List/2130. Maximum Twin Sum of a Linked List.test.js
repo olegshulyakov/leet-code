@@ -47,29 +47,23 @@ The number of nodes in the list is an even integer in the range [2, 10^5].
 const ListNode = require('./ListNode');
 
 /**
- * Reverse linked list
- * @param {ListNode} head
- * @return {ListNode}
- */
-function reverse(head) {
-    let prev = null;
-    let current = new ListNode(head.val, head.next);
-    while (current) {
-        let next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next != null ? new ListNode(next.val, next.next) : null;
-    }
-    return prev;
-}
-/**
  * @param {ListNode} head
  * @return {number}
  */
 var pairSum = function (head) {
+    let n = 0;
+    let tail = null;
+    let current = new ListNode(head.val, head.next);
+    while (current) {
+        const next = current.next;
+        current.next = tail;
+        tail = current;
+        current = next != null ? new ListNode(next.val, next.next) : null;
+        n++;
+    }
+
     let max = Number.NEGATIVE_INFINITY;
-    let tail = reverse(head);
-    while (head != null && tail != null) {
+    for (let i = 0; i <= (n / 2) - 1; i++) {
         const sum = head.val + tail.val;
         max = sum > max ? sum : max;
         head = head.next;
