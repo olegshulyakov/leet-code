@@ -13,10 +13,16 @@ describe('TreeNode', () => {
         expect(TreeNode.toArray(root)).toEqual([]);
     });
 
-    it('should not create a binary tree with duplicate values', () => {
+    it.skip('should not create a binary tree with duplicate values', () => {
         const nums = [1, 2, null, 3, 4];
         const modifiedNums = [1, 2, 2, 3, 4];
         const root = TreeNode.from(modifiedNums);
+        expect(TreeNode.toArray(root)).toEqual(nums);
+    });
+
+    it('should  create a binary tree with duplicate values', () => {
+        const nums = [1, 2, 2, 3, 4];
+        const root = TreeNode.from(nums);
         expect(TreeNode.toArray(root)).toEqual(nums);
     });
 

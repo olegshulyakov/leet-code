@@ -20,7 +20,7 @@ class TreeNode {
         if (!nums.length) return null;
 
         const nodes = nums.map((val, i) => {
-            if (val === null || nums.indexOf(val) < i) return null;
+            //if (val === null || nums.indexOf(val) < i) return null;
             return new TreeNode(val)
         });
 
