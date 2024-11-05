@@ -49,12 +49,8 @@ var goodNodes = function (root) {
     const checkSubTree = function (root, maxValue) {
         let count = root.val >= maxValue ? 1 : 0;
         const maxVal = root.val > maxValue ? root.val : maxValue;
-        if (root.left) {
-            count += checkSubTree(root.left, maxVal);
-        }
-        if (root.right) {
-            count += checkSubTree(root.right, maxVal);
-        }
+        count += root.left ? checkSubTree(root.left, maxVal) : 0;
+        count += root.right ? checkSubTree(root.right, maxVal) : 0;
         return count;
     }
 
