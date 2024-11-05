@@ -47,11 +47,10 @@ var goodNodes = function (root) {
     if (!root) return 0;
 
     const checkSubTree = function (root, maxValue) {
-        let count = root.val >= maxValue ? 1 : 0;
         const maxVal = root.val > maxValue ? root.val : maxValue;
-        count += root.left ? checkSubTree(root.left, maxVal) : 0;
-        count += root.right ? checkSubTree(root.right, maxVal) : 0;
-        return count;
+        return (root.val >= maxValue ? 1 : 0)
+            + (root.left ? checkSubTree(root.left, maxVal) : 0)
+            + (root.right ? checkSubTree(root.right, maxVal) : 0);
     }
 
     return checkSubTree(root, Number.NEGATIVE_INFINITY);
