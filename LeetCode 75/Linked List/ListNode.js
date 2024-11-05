@@ -4,9 +4,9 @@
  * @param {ListNode} next
  */
 class ListNode {
-    constructor(val, next) {
-        this.val = (val === undefined ? 0 : val);
-        this.next = (next === undefined ? null : next);
+    constructor(val = 0, next = null) {
+        this.val = val;
+        this.next = next;
     }
 
     /**
@@ -15,6 +15,14 @@ class ListNode {
      * @return {ListNode}
      */
     static from(nums) {
+        if (!Array.isArray(nums)) {
+            throw new Error('Input must be an array');
+        }
+
+        if (nums.length === 0) {
+            return undefined;
+        }
+
         let head = undefined;
         for (let i = nums.length - 1; i >= 0; i--) {
             head = new ListNode(nums[i], head);
@@ -27,6 +35,13 @@ class ListNode {
      * @return {Array}
      */
     static toArray(node) {
+        if (node == null) {
+            throw new Error('Input node cannot be null');
+        }
+        if (!(node instanceof ListNode)) {
+            throw new Error('Input must be a ListNode');
+        }
+
         const res = [];
         let pointer = node;
         while (pointer != null) {
