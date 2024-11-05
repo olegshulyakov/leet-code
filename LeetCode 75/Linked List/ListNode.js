@@ -36,7 +36,7 @@ class ListNode {
      */
     static toArray(node) {
         if (node == null) {
-            throw new Error('Input node cannot be null');
+            return []
         }
         if (!(node instanceof ListNode)) {
             throw new Error('Input must be a ListNode');

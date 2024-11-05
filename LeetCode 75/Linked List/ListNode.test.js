@@ -77,8 +77,8 @@ describe('ListNode', () => {
         expect(result).toEqual([2, 1, 3]);
     });
 
-    it('should throw an error when passing null to toArray function', () => {
-        expect(() => ListNode.toArray(null)).toThrow('Input node cannot be null');
+    it('should return empty array when passing null to toArray function', () => {
+        expect(ListNode.toArray(null)).toEqual([]);
     });
 
     it('should create an array from empty linked list', () => {
