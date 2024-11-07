@@ -11,6 +11,20 @@ class TreeNode {
         this.right = right;
     }
 
+    static printTree(node, level = 0, isLast = false) {
+        if (!node) return;
+
+        const indent = ' '.repeat(level * 4);
+        let output = `${indent}${isLast ? '└── ' : '├── '}${node.val}\n`;
+
+        if (node.left || node.right) {
+            output += this.printTree(node.left, level + 1, false);
+            output += this.printTree(node.right, level + 1, true);
+        }
+
+        return output;
+    }
+
     /**
      * Generate binary tree.
      * @param {Array} nums
@@ -34,6 +48,8 @@ class TreeNode {
             }
             i++;
         }
+
+        // console.debug(TreeNode.printTree(nodes[0]));
 
         return nodes[0];
     }
