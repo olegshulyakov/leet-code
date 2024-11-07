@@ -41,12 +41,12 @@ var pathSum = function (root, targetSum) {
         let count = node.val === target ? 1 : 0;
 
         target -= node.val;
-        return count + subSum(node.left, target) + subSum(node.right, target);
+        return count + (node.left ? subSum(node.left, target) : 0) + (node.right ? subSum(node.right, target) : 0);
     }
 
     return subSum(root, targetSum)
-        + pathSum(root.left, targetSum)
-        + pathSum(root.right, targetSum);
+        + (root.left ? pathSum(root.left, targetSum) : 0)
+        + (root.right ? pathSum(root.right, targetSum) : 0);
 };
 
 describe('437. Path Sum III', () => {
