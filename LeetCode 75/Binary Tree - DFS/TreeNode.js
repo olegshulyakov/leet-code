@@ -30,28 +30,32 @@ class TreeNode {
      * @param {Array} nums
      * @return {TreeNode}
      */
-    static from(nums) {
-        if (!nums.length) return null;
+    static from(arr) {
+        if (arr.length === 0 || arr[0] == null) return null; // Handle edge cases
 
-        const nodes = nums.map((val, i) => {
-            //if (val === null || nums.indexOf(val) < i) return null;
-            return new TreeNode(val)
-        });
+        const root = new TreeNode(arr[0]);
+        let queue = [root];
+        let index = 1;
 
-        let i = 0;
-        while (2 * i + 1 < nodes.length) {
-            if (nodes[2 * i + 1]) {
-                nodes[i].left = nodes[2 * i + 1];
+        while (queue.length > 0 && index < arr.length) {
+            let node = queue.shift(); // Remove the first element from the queue
+
+            if (index < arr.length && arr[index] != null) {
+                node.left = new TreeNode(arr[index]); // Create left child
+                queue.push(node.left); // Add to queue for further processing
             }
-            if (nodes[2 * i + 2]) {
-                nodes[i].right = nodes[2 * i + 2];
+            index++;
+
+            if (index < arr.length && arr[index] != null) {
+                node.right = new TreeNode(arr[index]); // Create right child
+                queue.push(node.right); // Add to queue for further processing
             }
-            i++;
+            index++;
         }
 
-        // console.debug(TreeNode.printTree(nodes[0]));
+        // console.debug(TreeNode.printTree(root));
 
-        return nodes[0];
+        return root;
     }
 
     /**

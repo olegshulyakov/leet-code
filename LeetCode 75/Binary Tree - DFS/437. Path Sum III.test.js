@@ -52,9 +52,9 @@ var pathSum = function (root, targetSum) {
 describe('437. Path Sum III', () => {
     test.each([
         { nums: [10, 5, -3, 3, 2, null, 11, 3, -2, null, 1], targetSum: 8, expected: 3 },
-        { nums: [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, null, 5, 1], targetSum: 22, expected: 3 },
+        { nums: [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1], targetSum: 22, expected: 3 },
         { nums: [], targetSum: 1, expected: 0 },
         { nums: [-2, null, -3], targetSum: -5, expected: 1 },
-        { nums: [1, -2, -3, 1, 3, -2, undefined, -1, undefined], targetSum: -1, expected: 5 },
+        { nums: [1, -2, -3, 1, 3, -2, null, -1], targetSum: -1, expected: 4 },
     ])('$nums, $targetSum', ({ nums, targetSum, expected }) => expect(pathSum(TreeNode.from(nums), targetSum)).toEqual(expected));
 })
