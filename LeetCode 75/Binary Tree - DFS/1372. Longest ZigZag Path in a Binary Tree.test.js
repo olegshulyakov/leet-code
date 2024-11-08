@@ -53,23 +53,17 @@ var longestZigZag = function (root) {
     while (queue.length > 0) {
         const cursor = queue.pop();
 
-        let count = 0;
-        let node = cursor;
-        while (node != null) {
-            node = count % 2 ? node.left : node.right;
-            count++;
+        for (let isBool of [true, false]) {
+            let count = 0;
+            let node = cursor;
+            while (node != null) {
+                node = isBool ? node.left : node.right;
+                isBool = !isBool;
+                count++;
+            }
+            count--;
+            max = max < count ? count : max;
         }
-        count--;
-        if (max < count) max = count;
-
-        count = 0;
-        node = cursor;
-        while (node != null) {
-            node = count % 2 ? node.right : node.left;
-            count++;
-        }
-        count--;
-        if (max < count) max = count;
 
         if (cursor.left != null) queue.push(cursor.left);
         if (cursor.right != null) queue.push(cursor.right);
