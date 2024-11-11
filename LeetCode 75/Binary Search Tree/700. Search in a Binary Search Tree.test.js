@@ -35,17 +35,8 @@ const TreeNode = require('../../src/DataStructures/TreeNode');
  */
 var searchBST = function (root, val) {
     if (root == null) return null;
-
-    const queue = [root];
-    while (queue.length > 0) {
-        const node = queue.shift();
-        if (val === node?.val) return node;
-        if (node != null) {
-            queue.push(node.left, node.right);
-        }
-    }
-
-    return null;
+    if (root.val == val) return root;
+    return searchBST(root.left, val) || searchBST(root.right, val);
 };
 
 describe('700. Search in a Binary Search Tree', () => {
