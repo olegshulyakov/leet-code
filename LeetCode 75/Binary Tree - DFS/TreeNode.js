@@ -31,29 +31,27 @@ class TreeNode {
      * @return {TreeNode}
      */
     static from(arr) {
-        if (arr.length === 0 || arr[0] == null) return null; // Handle edge cases
+        if (arr.length === 0 || arr[0] == null) return null;
 
         const root = new TreeNode(arr[0]);
         let queue = [root];
         let index = 1;
 
         while (queue.length > 0 && index < arr.length) {
-            let node = queue.shift(); // Remove the first element from the queue
+            let node = queue.shift();
 
             if (index < arr.length && arr[index] != null) {
-                node.left = new TreeNode(arr[index]); // Create left child
-                queue.push(node.left); // Add to queue for further processing
+                node.left = new TreeNode(arr[index]);
+                queue.push(node.left);
             }
             index++;
 
             if (index < arr.length && arr[index] != null) {
-                node.right = new TreeNode(arr[index]); // Create right child
-                queue.push(node.right); // Add to queue for further processing
+                node.right = new TreeNode(arr[index]);
+                queue.push(node.right);
             }
             index++;
         }
-
-        // console.debug(TreeNode.printTree(root));
 
         return root;
     }
