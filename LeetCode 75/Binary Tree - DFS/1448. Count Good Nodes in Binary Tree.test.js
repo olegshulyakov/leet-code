@@ -37,7 +37,7 @@ Each node's value is between [-10^4, 10^4].
 
 */
 
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../../src/DataStructures/TreeNode');
 
 /**
  * @param {TreeNode} root

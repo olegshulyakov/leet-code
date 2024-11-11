@@ -31,7 +31,7 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
 
 */
 
-const ListNode = require('./ListNode');
+const ListNode = require('../../src/DataStructures/ListNode');
 
 /**
  * @param {ListNode} head

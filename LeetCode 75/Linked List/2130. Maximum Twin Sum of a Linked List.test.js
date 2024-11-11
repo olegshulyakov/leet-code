@@ -44,7 +44,7 @@ The number of nodes in the list is an even integer in the range [2, 10^5].
 
 */
 
-const ListNode = require('./ListNode');
+const ListNode = require('../../src/DataStructures/ListNode');
 
 /**
  * @param {ListNode} head

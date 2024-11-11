@@ -28,7 +28,7 @@ The number of nodes in the linked list is in the range [0, 10^4].
 
 */
 
-const ListNode = require('./ListNode');
+const ListNode = require('../../src/DataStructures/ListNode');
 
 /**
  * @param {ListNode} head

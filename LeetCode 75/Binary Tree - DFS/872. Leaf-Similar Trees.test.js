@@ -29,7 +29,7 @@ Both of the given trees will have values in the range [0, 200].
 
 */
 
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../../src/DataStructures/TreeNode');
 
 /**
  * @param {TreeNode} root1

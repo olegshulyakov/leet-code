@@ -24,7 +24,7 @@ The number of nodes in the tree is in the range [0, 10^4].
 
 */
 
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../../src/DataStructures/TreeNode');
 
 /**
  * @param {TreeNode} root

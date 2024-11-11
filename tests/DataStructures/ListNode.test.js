@@ -1,4 +1,4 @@
-const ListNode = require('./ListNode');
+const ListNode = require('../../src/DataStructures/ListNode')
 
 describe('ListNode', () => {
     it('should create a new ListNode with default values', () => {

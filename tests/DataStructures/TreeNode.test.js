@@ -1,4 +1,4 @@
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../../src/DataStructures/TreeNode')
 
 describe('TreeNode', () => {
     it('should create a binary tree from an array of numbers', () => {

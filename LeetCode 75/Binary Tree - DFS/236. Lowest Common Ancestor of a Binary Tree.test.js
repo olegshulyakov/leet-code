@@ -35,7 +35,7 @@ p and q will exist in the tree.
 
 */
 
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../../src/DataStructures/TreeNode');
 
 /**
  * @param {TreeNode} root

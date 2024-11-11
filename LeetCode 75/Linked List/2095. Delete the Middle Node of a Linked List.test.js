@@ -43,7 +43,7 @@ The number of nodes in the list is in the range [1, 10^5].
 
 */
 
-const ListNode = require('./ListNode');
+const ListNode = require('../../src/DataStructures/ListNode');
 
 /**
  * @param {ListNode} head
