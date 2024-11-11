@@ -51,9 +51,13 @@ var maxLevelSum = function (root) {
             res = depth;
         }
 
-        const newQueue = queue.flatMap(current => [current?.left, current?.right]).filter(el => el != null);
-        queue = newQueue || [];
-
+        const newQueue = [];
+        queue.forEach(current => {
+            if (current == null) return;
+            if (current.left != null) newQueue.push(current.left);
+            if (current.right != null) newQueue.push(current.right);
+        });
+        queue = newQueue;
     }
 
     return res;
