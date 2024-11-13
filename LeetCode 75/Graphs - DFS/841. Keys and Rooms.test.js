@@ -50,13 +50,14 @@ var canVisitAllRooms = function (rooms) {
     while (visited.size !== rooms.length) {
         let nextRoom;
         for (const k of keySet) {
-            if (visited.has(k)) continue;
-            nextRoom = k;
-            break;
+            if (!visited.has(k)) {
+                nextRoom = k;
+                break;
+            }
         }
-
         if (nextRoom == null) return false;
-        if (rooms[nextRoom].length > 0) rooms[nextRoom].forEach(k => keySet.add(k));
+
+        rooms[nextRoom].forEach(k => keySet.add(k));
         visited.add(nextRoom);
     }
 
