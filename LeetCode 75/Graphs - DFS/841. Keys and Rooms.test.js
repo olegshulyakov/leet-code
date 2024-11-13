@@ -44,24 +44,17 @@ All the values of rooms[i] are unique.
 var canVisitAllRooms = function (rooms) {
     if (!rooms || rooms.length === 0) return true;
 
-    const keySet = new Set(rooms[0]);
-    const visited = new Set([0]);
+    const visited = new Set();
+    const queue = [0];
 
-    while (visited.size !== rooms.length) {
-        let nextRoom;
-        for (const k of keySet) {
-            if (!visited.has(k)) {
-                nextRoom = k;
-                break;
-            }
-        }
-        if (nextRoom == null) return false;
-
-        rooms[nextRoom].forEach(k => keySet.add(k));
-        visited.add(nextRoom);
+    while (queue.length > 0) {
+        const next = queue.pop();
+        if (visited.has(next)) continue;
+        visited.add(next);
+        queue.push(...rooms[next]);
     }
 
-    return true;
+    return visited.size === rooms.length;
 };
 
 describe('841. Keys and Rooms', () => {
