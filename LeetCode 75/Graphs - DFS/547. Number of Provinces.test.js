@@ -40,22 +40,23 @@ var findCircleNum = function (isConnected) {
     if (!isConnected || isConnected.length === 0) return 0;
 
     const isVisited = new Array(isConnected.length);
-    const visitCity = (city) => {
-        isVisited[city] = true;
-
+    const visitNearbyTowns = (city) => {
         for (let neighbor = 0; neighbor < isConnected.length; neighbor++) {
-            if (!isVisited[neighbor] && isConnected[city][neighbor]) {
-                visitCity(neighbor);
-            }
+            if (isVisited[neighbor] || !isConnected[city][neighbor]) continue;
+
+            isVisited[neighbor] = true;
+            visitNearbyTowns(neighbor);
         }
     }
 
     let provinces = 0;
     for (let city = 0; city < isConnected.length; city++) {
-        if (!isVisited[city]) {
-            visitCity(city);
-            provinces++;
-        }
+        if (isVisited[city]) continue;
+
+        isVisited[city] = true;
+        visitNearbyTowns(city);
+
+        provinces++;
     }
     return provinces;
 };
