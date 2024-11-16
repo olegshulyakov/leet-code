@@ -52,14 +52,14 @@ var minReorder = function (n, connections) {
     const visitCityAndNearby = (city) => {
         visited[city] = true;
 
-        for (let i = 0; i < connections.length; i++) {
-            if (visited[connections[i][0]] && visited[connections[i][1]]) continue;
-            if (city === connections[i][0]) {
+        for (const [a, b] of connections) {
+            if (visited[a] && visited[b]) continue;
+
+            if (city === a) {
                 flips++;
-                visitCityAndNearby(connections[i][1]);
-            }
-            if (city === connections[i][1]) {
-                visitCityAndNearby(connections[i][0]);
+                visitCityAndNearby(b);
+            } else if (city === b) {
+                visitCityAndNearby(a);
             }
         }
     }
