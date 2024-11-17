@@ -49,31 +49,26 @@ a_i != b_i
 var minReorder = function (n, connections) {
     let flips = 0;
     const visited = new Array(n);
-    const roadsIn = new Map();
-    const roadsOut = new Map();
+    const roads = new Map();
     for (const [a, b] of connections) {
-        if (roadsOut.has(a)) roadsOut.set(a, [b, ...roadsOut.get(a)])
-        else roadsOut.set(a, [b])
+        if (roads.has(a)) roads.set(a, [{ city: b, isOut: true }, ...roads.get(a)])
+        else roads.set(a, [{ city: b, isOut: true }])
 
-        if (roadsIn.has(b)) roadsIn.set(b, [a, ...roadsIn.get(b)])
-        else roadsIn.set(b, [a])
+        if (roads.has(b)) roads.set(b, [{ city: a, isOut: false }, ...roads.get(b)])
+        else roads.set(b, [{ city: a, isOut: false }])
     }
 
-    const visitCityAndNearby = (city) => {
+    const goToCity = (city) => {
         visited[city] = true;
 
-        for (const nextCity of roadsIn.get(city) || []) {
+        for (const { city: nextCity, isOut } of roads.get(city) || []) {
             if (visited[nextCity]) continue;
-            visitCityAndNearby(nextCity);
-        }
-        for (const nextCity of roadsOut.get(city) || []) {
-            if (visited[nextCity]) continue;
-            flips++;
-            visitCityAndNearby(nextCity);
+            if (isOut) flips++;
+            goToCity(nextCity);
         }
     }
 
-    visitCityAndNearby(0);
+    goToCity(0);
     return flips;
 };
 
