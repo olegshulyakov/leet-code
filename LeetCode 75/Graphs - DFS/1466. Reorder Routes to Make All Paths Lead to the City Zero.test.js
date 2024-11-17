@@ -48,19 +48,28 @@ a_i != b_i
  */
 var minReorder = function (n, connections) {
     let flips = 0;
-    const visited = new Array(n).fill(false);
+    const visited = new Array(n);
+    const roadsIn = new Map();
+    const roadsOut = new Map();
+    for (const [a, b] of connections) {
+        if (roadsOut.has(a)) roadsOut.set(a, [b, ...roadsOut.get(a)])
+        else roadsOut.set(a, [b])
+
+        if (roadsIn.has(b)) roadsIn.set(b, [a, ...roadsIn.get(b)])
+        else roadsIn.set(b, [a])
+    }
+
     const visitCityAndNearby = (city) => {
         visited[city] = true;
 
-        for (const [a, b] of connections) {
-            if (visited[a] && visited[b]) continue;
-
-            if (city === a) {
-                flips++;
-                visitCityAndNearby(b);
-            } else if (city === b) {
-                visitCityAndNearby(a);
-            }
+        for (const nextCity of roadsIn.get(city) || []) {
+            if (visited[nextCity]) continue;
+            visitCityAndNearby(nextCity);
+        }
+        for (const nextCity of roadsOut.get(city) || []) {
+            if (visited[nextCity]) continue;
+            flips++;
+            visitCityAndNearby(nextCity);
         }
     }
 
@@ -71,7 +80,7 @@ var minReorder = function (n, connections) {
 describe('1466. Reorder Routes to Make All Paths Lead to the City Zero', () => {
     test.each([
         { n: 6, connections: [[0, 1], [1, 3], [2, 3], [4, 0], [4, 5]], expected: 3 },
-        { n: 3, connections: [[1, 0], [2, 0]], expected: 0 },
+        { n: 5, connections: [[1, 0], [1, 2], [3, 2], [3, 4]], expected: 2 },
         { n: 3, connections: [[1, 0], [2, 0]], expected: 0 },
         { n: 6, connections: [[4, 5], [0, 1], [1, 3], [2, 3], [4, 0]], expected: 3 },
     ])('$n, $connections', ({ n, connections, expected }) => expect(minReorder(n, connections)).toEqual(expected));
