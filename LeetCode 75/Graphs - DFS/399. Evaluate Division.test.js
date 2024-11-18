@@ -71,11 +71,17 @@ var calcEquation = function (equations, values, queries) {
         addToMap(j, i, 1 / value);
     }
 
+    const visited = new Set();
+
     const dfs = (dividend, divisor) => {
+        visited.add(`${dividend}${divisor}`);
+
         const memorized = evals.get(dividend);
         if (memorized.has(divisor)) return memorized.get(divisor);
 
         for (const [key, value] of memorized) {
+            if (visited.has(`${key}${divisor}`)) continue;
+
             const res = dfs(key, divisor);
             if (res !== -1) return value * res;
         }
@@ -86,6 +92,7 @@ var calcEquation = function (equations, values, queries) {
     const answers = new Array(queries.length);
     for (let index = 0; index < queries.length; index++) {
         const [i, j] = queries[index];
+        visited.clear();
 
         if (!evals.has(i) || !evals.has(j)) answers[index] = -1;
         else if (i === j) answers[index] = 1;
@@ -102,5 +109,7 @@ describe('399. Evaluate Division', () => {
         { equations: [["a", "b"], ["b", "c"]], values: [2.0, 3.0], queries: [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]], expected: [6.00000, 0.50000, -1.00000, 1.00000, -1.00000] },
         { equations: [["a", "b"], ["b", "c"], ["bc", "cd"]], values: [1.5, 2.5, 5.0], queries: [["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]], expected: [3.75000, 0.40000, 5.00000, 0.20000] },
         { equations: [["a", "b"]], values: [0.5], queries: [["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]], expected: [0.50000, 2.00000, -1.00000, -1.00000] },
+        { equations: [["x1", "x2"], ["x2", "x3"], ["x3", "x4"], ["x4", "x5"]], values: [3.0, 4.0, 5.0, 6.0], queries: [["x1", "x5"], ["x5", "x2"], ["x2", "x4"], ["x2", "x2"], ["x2", "x9"], ["x9", "x9"]], expected: [360.00000, 0.008333333333333333, 20.00000, 1.00000, -1.00000, -1.00000] },
+        { equations: [["a", "b"], ["c", "d"]], values: [1.0, 1.0], queries: [["a", "c"], ["b", "d"], ["b", "a"], ["d", "c"]], expected: [-1, -1, 1, 1] },
     ])('$equations, $values, $queries', ({ equations, values, queries, expected }) => expect(calcEquation(equations, values, queries)).toEqual(expected));
 })
