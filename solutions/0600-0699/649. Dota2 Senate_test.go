@@ -1,3 +1,9 @@
+package main
+
+import (
+	"testing"
+)
+
 /*
 
 In the world of Dota2, there are two parties: the Radiant and the Dire.
@@ -42,29 +48,77 @@ senate[i] is either 'R' or 'D'.
 
 */
 
-/**
- * @param {string} senate
- * @return {string}
- */
-var predictPartyVictory = function (senate) {
-    const queue = [...senate];
-    let indexOpposite = 0;
-    while (queue.length > 1 && indexOpposite > -1) {
-        const senator = queue.shift();
-        indexOpposite = queue.findIndex(s => s !== senator);
-        if (indexOpposite > -1) {
-            queue.splice(indexOpposite, 1);
-        }
-        queue.push(senator);
-    }
-    return queue[0] === 'R' ? 'Radiant' : 'Dire';
-};
+// predictPartyVictory determines which party will win in the Dota2 Senate voting process.
+// Each senator can ban an opposing senator in a round-based procedure.
+// The goal is to determine which party will finally announce the victory.
+//
+// The algorithm simulates the voting process:
+// 1. Each senator takes turns in a queue-like fashion
+// 2. When it's a senator's turn, they ban the first opposing senator
+// 3. The banning senator goes to the back of the queue for the next round
+// 4. This continues until only one party remains
+//
+// Parameters:
+//
+//	senate string - String representing senators where 'R' = Radiant, 'D' = Dire
+//
+// Returns:
+//
+//	string - Winning party ("Radiant" or "Dire")
+func predictPartyVictory(senate string) string {
+	// Convert string to slice for easier manipulation
+	queue := []rune(senate)
+	indexOpposite := 0
 
-describe('649. Dota2 Senate', () => {
-    test.each([
-        { senate: "RD", expected: "Radiant" },
-        { senate: "RDD", expected: "Dire" },
-        { senate: "DDRRR", expected: "Dire" },
-        { senate: "RRR", expected: "Radiant" },
-    ])('$senate', ({ senate, expected }) => expect(predictPartyVictory(senate)).toEqual(expected));
-})
+	// Continue until only one senator remains or no opposing senator found
+	for len(queue) > 1 && indexOpposite > -1 {
+		// Get the current senator (first in queue)
+		senator := queue[0]
+		// Remove the first senator from queue
+		queue = queue[1:]
+
+		// Find the first opposing senator
+		indexOpposite = -1
+		for i, s := range queue {
+			if s != senator {
+				indexOpposite = i
+				break
+			}
+		}
+
+		// If opposing senator found, remove them from the queue
+		if indexOpposite > -1 {
+			// Remove the opposing senator
+			queue = append(queue[:indexOpposite], queue[indexOpposite+1:]...)
+		}
+
+		// Add the current senator back to the end of the queue for next round
+		queue = append(queue, senator)
+	}
+
+	// Return the winning party
+	if queue[0] == 'R' {
+		return "Radiant"
+	}
+	return "Dire"
+}
+
+func TestPredictPartyVictory(t *testing.T) {
+	testCases := []struct {
+		in   string
+		want string
+	}{
+		{in: "RD", want: "Radiant"},
+		{in: "RDD", want: "Dire"},
+		{in: "DDRRR", want: "Dire"},
+		{in: "RRR", want: "Radiant"},
+	}
+	for _, tc := range testCases {
+		t.Run("649. Dota2 Senate", func(t *testing.T) {
+			out := predictPartyVictory(tc.in)
+			if out != tc.want {
+				t.Errorf("predictPartyVictory(%q) = %q, expected %q", tc.in, out, tc.want)
+			}
+		})
+	}
+}

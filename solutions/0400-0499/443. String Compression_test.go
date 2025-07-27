@@ -1,4 +1,4 @@
-package arrayorstring_test
+package main
 
 import (
 	"strconv"
