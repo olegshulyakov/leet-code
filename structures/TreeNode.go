@@ -30,14 +30,15 @@ type TreeNode struct {
 // Returns:
 //
 //	*TreeNode - Root node of the constructed binary tree (nil if array is empty)
-func NewTree(arr []int) *TreeNode {
+func NewTree(arr []any) *TreeNode {
 	// Return nil for empty array
 	if len(arr) == 0 {
 		return nil
 	}
 
 	// Create root node with first element
-	root := &TreeNode{Val: arr[0]}
+	val, _ := arr[0].(int)
+	root := &TreeNode{Val: val}
 
 	// Initialize queue with root node for breadth-first construction
 	queue := []*TreeNode{root}
@@ -52,10 +53,10 @@ func NewTree(arr []int) *TreeNode {
 		queue = queue[1:]
 
 		// Process left child
-		// 0 represents null node in this implementation
-		if index < len(arr) && arr[index] != 0 {
+		if index < len(arr) && arr[index] != nil {
+			val, _ = arr[index].(int)
 			// Create new node and link it as left child
-			node.Left = &TreeNode{Val: arr[index]}
+			node.Left = &TreeNode{Val: val}
 			// Enqueue the new node for processing its children
 			queue = append(queue, node.Left)
 		}
@@ -63,9 +64,10 @@ func NewTree(arr []int) *TreeNode {
 		index++
 
 		// Process right child
-		if index < len(arr) && arr[index] != 0 {
+		if index < len(arr) && arr[index] != nil {
+			val, _ = arr[index].(int)
 			// Create new node and link it as right child
-			node.Right = &TreeNode{Val: arr[index]}
+			node.Right = &TreeNode{Val: val}
 			// Enqueue the new node for processing its children
 			queue = append(queue, node.Right)
 		}
@@ -150,36 +152,40 @@ func printHelper(node *TreeNode, level int, isLast bool) string {
 // Returns:
 //
 //	[]int - Array representation of the binary tree in level-order traversal
-func (node *TreeNode) ToArray() []int {
+func (node *TreeNode) ToArray() []any {
 	// Return empty slice for nil tree
 	if node == nil {
-		return []int{}
+		return []any{}
 	}
 
 	// Initialize result slice and queue for level-order traversal
-	res := []int{}
+	res := []any{}
 	queue := []*TreeNode{node}
 
 	// Process nodes in level-order using BFS
 	for len(queue) > 0 {
 		// Dequeue front node
-		n := queue[0]
+		current := queue[0]
 		queue = queue[1:]
 
-		if n != nil {
+		if current != nil {
 			// Add node value to result
-			res = append(res, n.Val)
+			res = append(res, current.Val)
 			// Enqueue children for processing (nil children are also enqueued)
-			queue = append(queue, n.Left, n.Right)
+			queue = append(queue, current.Left, current.Right)
 		} else {
-			// Add 0 for null nodes
-			res = append(res, 0)
+			// Add nil nodes
+			res = append(res, nil)
 		}
 	}
 
-	// Remove trailing zeros that represent null nodes at the end
-	for len(res) > 0 && res[len(res)-1] == 0 {
-		res = res[:len(res)-1]
+	// Remove trailing nil values
+	for len(res) > 0 {
+		if res[len(res)-1] == nil {
+			res = res[:len(res)-1]
+		} else {
+			break
+		}
 	}
 
 	// Return the array representation

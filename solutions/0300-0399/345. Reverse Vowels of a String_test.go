@@ -85,7 +85,7 @@ func TestReverseVowels(t *testing.T) {
 		t.Run("345. Reverse Vowels of a String", func(t *testing.T) {
 			out := reverseVowels(tc.in)
 			if out != tc.want {
-				t.Errorf("reverseVowels(%q) = %q, want: %q", tc.in, out, tc.want)
+				t.Errorf("reverseVowels(%v) = %v, want: %v", tc.in, out, tc.want)
 			}
 		})
 	}

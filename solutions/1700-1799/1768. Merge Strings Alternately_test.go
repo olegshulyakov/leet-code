@@ -96,7 +96,7 @@ func TestMergeAlternately(t *testing.T) {
 		t.Run("1768. Merge Strings Alternately", func(t *testing.T) {
 			result := mergeAlternately(tc.word1, tc.word2)
 			if result != tc.want {
-				t.Errorf("mergeAlternately(%q, %q) = %q, want: %q", tc.word1, tc.word2, result, tc.want)
+				t.Errorf("mergeAlternately(%v, %v) = %v, want: %v", tc.word1, tc.word2, result, tc.want)
 			}
 		})
 	}

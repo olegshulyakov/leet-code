@@ -117,7 +117,7 @@ func TestPredictPartyVictory(t *testing.T) {
 		t.Run("649. Dota2 Senate", func(t *testing.T) {
 			out := predictPartyVictory(tc.in)
 			if out != tc.want {
-				t.Errorf("predictPartyVictory(%q) = %q, expected %q", tc.in, out, tc.want)
+				t.Errorf("predictPartyVictory(%v) = %v, expected %v", tc.in, out, tc.want)
 			}
 		})
 	}

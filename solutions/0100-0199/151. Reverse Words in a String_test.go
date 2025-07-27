@@ -78,7 +78,7 @@ func TestReverseWords(t *testing.T) {
 		t.Run("151. Reverse Words in a String", func(t *testing.T) {
 			result := reverseWords(tc.in)
 			if result != tc.want {
-				t.Errorf("reverseWords(%q) = %q, want %q", tc.in, result, tc.want)
+				t.Errorf("reverseWords(%v) = %v, want %v", tc.in, result, tc.want)
 			}
 		})
 	}

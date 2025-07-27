@@ -38,13 +38,14 @@ func Test(t *testing.T) {
 	for _, tc := range testcases {
 		name := fmt.Sprintf("Example: %s", strings.Join(tc.in, ", "))
 		t.Run(name, func(t *testing.T) {
+			t.Logf("fun: in=%v", tc.in)
 			out := fun(tc.in)
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
 			}
 			for i := range out {
 				if out[i] != tc.want[i] {
-					t.Errorf("fun()[%v] = %q, want: %q", i+1, out[i], tc.want[i])
+					t.Errorf("fun()[%v] = %v, want: %v", i+1, out[i], tc.want[i])
 				}
 			}
 		})

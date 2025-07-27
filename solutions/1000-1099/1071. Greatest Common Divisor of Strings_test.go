@@ -111,7 +111,7 @@ func TestGcdOfStrings(t *testing.T) {
 		t.Run("1071. Greatest Common Divisor of Strings", func(t *testing.T) {
 			out := gcdOfStrings(tc.str1, tc.str2)
 			if out != tc.want {
-				t.Errorf("gcdOfStrings(%q, %q) = %q, want: %q", tc.str1, tc.str2, out, tc.want)
+				t.Errorf("gcdOfStrings(%v, %v) = %v, want: %v", tc.str1, tc.str2, out, tc.want)
 			}
 		})
 	}

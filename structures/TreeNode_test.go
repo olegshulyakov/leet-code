@@ -1,7 +1,6 @@
 package structures_test
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/olegshulyakov/leet-code.go/structures"
@@ -9,12 +8,12 @@ import (
 
 func TestTreeNode(t *testing.T) {
 	testcases := []struct {
-		in, want []int
+		in, want []any
 	}{
-		{[]int{1, 2, 0, 3, 4}, []int{1, 2, 0, 3, 4}},
-		{[]int{}, []int{}},
-		{[]int{1, 2, 2, 3, 4}, []int{1, 2, 2, 3, 4}},
-		{[]int{1}, []int{1}},
+		{[]any{1, 2, 0, 3, 4}, []any{1, 2, 0, 3, 4}},
+		{[]any{}, []any{}},
+		{[]any{1, 2, 2, 3, 4}, []any{1, 2, 2, 3, 4}},
+		{[]any{1}, []any{1}},
 	}
 
 	for _, tc := range testcases {
@@ -28,7 +27,7 @@ func TestTreeNode(t *testing.T) {
 		// Compare each element of the output with expected values
 		for i := range out {
 			if out[i] != tc.want[i] {
-				t.Errorf("Element mismatch at index [%v] - want: %q, got: %q",
+				t.Errorf("Element mismatch at index [%v] - want: %v, got: %v",
 					i+1, tc.want[i], out[i])
 			}
 		}
@@ -47,7 +46,7 @@ func TestTreeNodeWithNil(t *testing.T) {
 	out := root.ToArray()
 	want := []int{}
 
-	if !reflect.DeepEqual(out, want) {
-		t.Errorf("want %v, got %v", want, out)
+	if len(out) != len(want) {
+		t.Errorf("len() = %v, want: %v", len(out), len(want))
 	}
 }

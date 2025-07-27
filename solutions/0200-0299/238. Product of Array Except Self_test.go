@@ -100,7 +100,7 @@ func TestProductExceptSelf(t *testing.T) {
 			}
 			for i := range out {
 				if out[i] != tc.want[i] {
-					t.Errorf("productExceptSelf()[%v] = %q, want: %q", i+1, out[i], tc.want[i])
+					t.Errorf("productExceptSelf()[%v] = %v, want: %v", i+1, out[i], tc.want[i])
 				}
 			}
 		})
