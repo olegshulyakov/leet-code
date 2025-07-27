@@ -18,8 +18,7 @@ func TestTreeNode(t *testing.T) {
 	}
 
 	for _, tc := range testcases {
-		root := structures.NewTree(tc.in)
-		out := root.ToArray()
+		out := structures.NewTree(tc.in).ToArray()
 
 		// Verify the length of output matches expected length
 		if len(out) != len(tc.want) {

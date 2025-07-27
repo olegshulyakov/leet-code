@@ -48,90 +48,90 @@ func TestListNodeValueAndNextNotNil(t *testing.T) {
 }
 
 func TestNewLinkedListSingle(t *testing.T) {
-	nums := []int{1}
-	result := structures.NewLinkedList(nums)
+	in := []int{1}
+	out := structures.NewLinkedList(in)
 
-	if result.Val != 1 {
-		t.Errorf("want result.Val = 1, got %d", result.Val)
+	if out.Val != 1 {
+		t.Errorf("want out.Val = 1, got %d", out.Val)
 	}
-	if result.Next != nil {
-		t.Error("want result.Next = nil")
+	if out.Next != nil {
+		t.Error("want out.Next = nil")
 	}
 }
 
 func TestNewLinkedListMultiple(t *testing.T) {
-	nums := []int{1, 2, 3}
-	result := structures.NewLinkedList(nums)
+	in := []int{1, 2, 3}
+	out := structures.NewLinkedList(in)
 
-	if result.Val != 1 {
-		t.Errorf("want result.Val = 1, got %d", result.Val)
+	if out.Val != 1 {
+		t.Errorf("want out.Val = 1, got %d", out.Val)
 	}
-	if result.Next.Val != 2 {
-		t.Errorf("want result.Next.Val = 2, got %d", result.Next.Val)
+	if out.Next.Val != 2 {
+		t.Errorf("want out.Next.Val = 2, got %d", out.Next.Val)
 	}
-	if result.Next.Next.Val != 3 {
-		t.Errorf("want result.Next.Next.Val = 3, got %d", result.Next.Next.Val)
+	if out.Next.Next.Val != 3 {
+		t.Errorf("want out.Next.Next.Val = 3, got %d", out.Next.Next.Val)
 	}
-	if result.Next.Next.Next != nil {
-		t.Error("want result.Next.Next.Next = nil")
+	if out.Next.Next.Next != nil {
+		t.Error("want out.Next.Next.Next = nil")
 	}
 }
 
 func TestNewLinkedListEmpty(t *testing.T) {
-	nums := []int{}
-	result := structures.NewLinkedList(nums)
+	in := []int{}
+	out := structures.NewLinkedList(in)
 
-	if result != nil {
-		t.Error("want result = nil")
+	if out != nil {
+		t.Error("want out = nil")
 	}
 }
 
 func TestToArraySingle(t *testing.T) {
 	node := &structures.ListNode{Val: 1}
-	result := node.ToArray()
+	out := node.ToArray()
 	want := []int{1}
-	if len(result) != len(want) {
-		t.Fatalf("want length %d, got %d", len(want), len(result))
+	if len(out) != len(want) {
+		t.Fatalf("want length %d, got %d", len(want), len(out))
 	}
 	for i, v := range want {
-		if result[i] != v {
-			t.Errorf("want result[%d] = %d, got %d", i, v, result[i])
+		if out[i] != v {
+			t.Errorf("want out[%d] = %d, got %d", i, v, out[i])
 		}
 	}
 }
 
 func TestToArrayMultiple(t *testing.T) {
 	node := &structures.ListNode{Val: 2, Next: &structures.ListNode{Val: 1, Next: &structures.ListNode{Val: 3}}}
-	result := node.ToArray()
+	out := node.ToArray()
 	want := []int{2, 1, 3}
-	if len(result) != len(want) {
-		t.Fatalf("want length %d, got %d", len(want), len(result))
+	if len(out) != len(want) {
+		t.Fatalf("want length %d, got %d", len(want), len(out))
 	}
 	for i, v := range want {
-		if result[i] != v {
-			t.Errorf("want result[%d] = %d, got %d", i, v, result[i])
+		if out[i] != v {
+			t.Errorf("want out[%d] = %d, got %d", i, v, out[i])
 		}
 	}
 }
 
 func TestToArrayNil(t *testing.T) {
 	var node *structures.ListNode
-	result := node.ToArray()
-	if len(result) != 0 {
-		t.Errorf("want empty array, got length %d", len(result))
+	out := node.ToArray()
+	if len(out) != 0 {
+		t.Errorf("want empty array, got length %d", len(out))
 	}
 }
 
 func TestToArrayEmpty(t *testing.T) {
 	node := &structures.ListNode{}
-	result := node.ToArray()
+	out := node.ToArray()
 	want := []int{0}
-	if len(result) != len(want) {
-		t.Fatalf("want length %d, got %d", len(want), len(result))
+	if len(out) != len(want) {
+		t.Fatalf("want length %d, got %d", len(want), len(out))
 	}
 	for i, v := range want {
-		if result[i] != v {
-			t.Errorf("want result[%d] = %d, got %d", i, v, result[i])
+		if out[i] != v {
+			t.Errorf("want out[%d] = %d, got %d", i, v, out[i])
 		}
 	}
 }
