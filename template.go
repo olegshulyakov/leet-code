@@ -30,33 +30,21 @@ func fun(s []string) []string {
 // Test validates the functionality of the fun function using table-driven tests.
 // It defines test cases and iterates through them to verify correct behavior.
 func Test(t *testing.T) {
-	// Define test cases with input and expected output
 	testcases := []struct {
-		in, want []string // in: input slice, want: expected output slice
+		in, want []string
 	}{
-		{[]string{}, []string{}}, // Test case: empty slice
+		{[]string{}, []string{}},
 	}
-
-	// Iterate through each test case
 	for _, tc := range testcases {
-		// Create descriptive test name using input values
 		name := fmt.Sprintf("Example: %s", strings.Join(tc.in, ", "))
-
-		// Run subtest with generated name
 		t.Run(name, func(t *testing.T) {
-			// Execute the function under test
 			out := fun(tc.in)
-
-			// Verify the length of output matches expected length
 			if len(out) != len(tc.want) {
-				t.Errorf("Length mismatch - want: %v, got: %v", len(tc.want), len(out))
+				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
 			}
-
-			// Compare each element of the output with expected values
 			for i := range out {
 				if out[i] != tc.want[i] {
-					t.Errorf("Element mismatch at index [%v] - want: %q, got: %q",
-						i+1, tc.want[i], out[i])
+					t.Errorf("fun()[%v] = %q, want: %q", i+1, out[i], tc.want[i])
 				}
 			}
 		})
