@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/olegshulyakov/leet-code.go/lib/structures"
+	"github.com/olegshulyakov/leet-code.go/structures"
 )
 
 func TestTreeNode(t *testing.T) {

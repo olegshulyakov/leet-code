@@ -3,7 +3,7 @@ package structures_test
 import (
 	"testing"
 
-	"github.com/olegshulyakov/leet-code.go/lib/structures"
+	"github.com/olegshulyakov/leet-code.go/structures"
 )
 
 func TestListNodeDefaultValues(t *testing.T) {
