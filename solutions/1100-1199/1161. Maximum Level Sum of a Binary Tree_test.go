@@ -103,7 +103,7 @@ func maxLevelSum(root *structures.TreeNode) int {
 	return resultLevel
 }
 
-func Test(t *testing.T) {
+func TestMaxLevelSum(t *testing.T) {
 	testcases := []struct {
 		in   []any
 		want int

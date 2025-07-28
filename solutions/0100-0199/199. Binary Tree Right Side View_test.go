@@ -70,7 +70,7 @@ func rightSideView(root *structures.TreeNode) []int {
 	return res
 }
 
-func Test(t *testing.T) {
+func TestRightSideView(t *testing.T) {
 	testcases := []struct {
 		in   []any
 		want []int
@@ -90,7 +90,7 @@ func Test(t *testing.T) {
 			}
 			for i := range out {
 				if out[i] != tc.want[i] {
-					t.Errorf("fun()[%v] = %v, want: %v", i+1, out[i], tc.want[i])
+					t.Errorf("rightSideView()[%v] = %v, want: %v", i+1, out[i], tc.want[i])
 				}
 			}
 		})
