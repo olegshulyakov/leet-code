@@ -72,14 +72,14 @@ func rightSideView(root *structures.TreeNode) []int {
 
 func Test(t *testing.T) {
 	testcases := []struct {
-		in   []interface{}
+		in   []any
 		want []int
 	}{
-		{in: []interface{}{1, 2, 3, nil, 5, nil, 4}, want: []int{1, 3, 4}},
-		{in: []interface{}{1, nil, 3}, want: []int{1, 3}},
-		{in: []interface{}{}, want: []int{}},
-		{in: []interface{}{1, 2}, want: []int{1, 2}},
-		{in: []interface{}{1, 2, 3, 4}, want: []int{1, 3, 4}},
+		{in: []any{1, 2, 3, nil, 5, nil, 4}, want: []int{1, 3, 4}},
+		{in: []any{1, nil, 3}, want: []int{1, 3}},
+		{in: []any{}, want: []int{}},
+		{in: []any{1, 2}, want: []int{1, 2}},
+		{in: []any{1, 2, 3, 4}, want: []int{1, 3, 4}},
 	}
 	for _, tc := range testcases {
 		t.Run("199. Binary Tree Right Side View", func(t *testing.T) {
