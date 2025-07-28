@@ -1,3 +1,7 @@
+package main
+
+import "testing"
+
 /*
 
 You are given a string s, which contains stars *.
@@ -40,23 +44,40 @@ The operation above can be performed on s.
 
 */
 
-/**
- * @param {string} s
- * @return {string}
- */
-var removeStars = function (s) {
-    const res = [];
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '*') res.pop();
-        else res.push(s[i]);
-    }
-    return res.join('');
-};
+// removeStars removes characters based on star operations
+// For each star encountered, it removes the closest non-star character to its left.
+func removeStars(s string) string {
+	stack := []rune{}
 
-describe('2390. Removing Stars From a String', () => {
-    test.each([
-        { s: "leet**cod*e", expected: "lecoe" },
-        { s: "erase*****", expected: "" },
-        { s: "", expected: "" },
-    ])('$s', ({ s, expected }) => expect(removeStars(s)).toEqual(expected));
-})
+	for _, char := range s {
+		if char == '*' {
+			// Remove the last character if stack is not empty
+			if len(stack) > 0 {
+				stack = stack[:len(stack)-1]
+			}
+		} else {
+			stack = append(stack, char)
+		}
+	}
+
+	return string(stack)
+}
+
+func TestRemoveStars(t *testing.T) {
+	testCases := []struct {
+		s    string
+		want string
+	}{
+		{"leet**cod*e", "lecoe"},
+		{"erase*****", ""},
+		{"", ""},
+	}
+	for _, tc := range testCases {
+		t.Run("2390. Removing Stars From a String", func(t *testing.T) {
+			out := removeStars(tc.s)
+			if out != tc.want {
+				t.Errorf("removeStars(%v) = %v, want: %v", tc.s, out, tc.want)
+			}
+		})
+	}
+}
