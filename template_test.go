@@ -1,4 +1,3 @@
-// Package main provides functionality for string slice operations and testing.
 package main
 
 import (
@@ -6,12 +5,6 @@ import (
 	"strings"
 	"testing"
 )
-
-// main is the entry point of the program.
-// Currently serves as a placeholder for future implementation.
-func main() {
-	// Placeholder for main program execution
-}
 
 // fun takes a slice of strings and returns the same slice unchanged.
 // This is a simple identity function that demonstrates basic slice handling.
