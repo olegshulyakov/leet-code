@@ -83,7 +83,7 @@ func TestRightSideView(t *testing.T) {
 	}
 	for _, tc := range testcases {
 		t.Run("199. Binary Tree Right Side View", func(t *testing.T) {
-			t.Logf("fun: in=%v", tc.in)
+			t.Logf("rightSideView: in=%v", tc.in)
 			out := rightSideView(structures.NewTree(tc.in))
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))

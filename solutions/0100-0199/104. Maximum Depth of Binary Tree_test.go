@@ -76,7 +76,7 @@ func TestMaxDepth(t *testing.T) {
 	}
 	for _, tc := range testcases {
 		t.Run("104. Maximum Depth of Binary Tree", func(t *testing.T) {
-			t.Logf("fun: in=%v", tc.in)
+			t.Logf("maxDepth: in=%v", tc.in)
 			out := maxDepth(structures.NewTree(tc.in))
 			if out != tc.want {
 				t.Errorf("maxDepth(%v) = %v, want: %v", tc.in, out, tc.want)
