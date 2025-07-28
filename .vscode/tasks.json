@@ -15,7 +15,7 @@
       "label": "go: test",
       "type": "shell",
       "command": "go",
-      "args": ["test", "./..."],
+      "args": ["test", "-count=1", "-p", "1", "./..."],
       "group": {
         "kind": "build",
         "isDefault": true
