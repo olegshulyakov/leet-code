@@ -1,3 +1,12 @@
+package main
+
+import (
+	"regexp"
+	"strconv"
+	"strings"
+	"testing"
+)
+
 /*
 
 Given an encoded string, return its decoded string.
@@ -36,27 +45,39 @@ All the integers in s are in the range [1, 300].
 
 */
 
-/**
- * @param {string} s
- * @return {string}
- */
-var decodeString = function (s) {
-    const regex = /(\d+)\[(\w+)\]/;
-    while (regex.test(s)) {
-        const res = regex.exec(s);
-        const orig = res[0];
-        const count = res[1];
-        const str = res[2];
-        s = s.replace(orig, str.repeat(count));
-    }
-    return s;
-};
+// decodeString decodes an encoded string according to the pattern k[encoded_string].
+func decodeString(s string) string {
+	regex := regexp.MustCompile(`(\d+)\[(\w+)\]`)
 
-describe('394. Decode String', () => {
-    test.each([
-        { s: "3[a]2[bc]", expected: "aaabcbc" },
-        { s: "3[a2[c]]", expected: "accaccacc" },
-        { s: "2[abc]3[cd]ef", expected: "abcabccdcdcdef" },
-        { s: "ef", expected: "ef" },
-    ])('$s', ({ s, expected }) => expect(decodeString(s)).toEqual(expected));
-})
+	for regex.MatchString(s) {
+		matches := regex.FindStringSubmatch(s)
+		original := matches[0]
+		count, _ := strconv.Atoi(matches[1])
+		str := matches[2]
+
+		replace := strings.Repeat(str, count)
+		s = strings.Replace(s, original, replace, 1)
+	}
+
+	return s
+}
+
+func TestDecodeString(t *testing.T) {
+	testCases := []struct {
+		s    string
+		want string
+	}{
+		{"3[a]2[bc]", "aaabcbc"},
+		{"3[a2[c]]", "accaccacc"},
+		{"2[abc]3[cd]ef", "abcabccdcdcdef"},
+		{"ef", "ef"},
+	}
+	for _, tc := range testCases {
+		t.Run("394. Decode String", func(t *testing.T) {
+			out := decodeString(tc.s)
+			if out != tc.want {
+				t.Errorf("decodeString(%v) = %v, want: %v", tc.s, out, tc.want)
+			}
+		})
+	}
+}
