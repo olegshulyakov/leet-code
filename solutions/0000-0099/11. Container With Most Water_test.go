@@ -82,32 +82,29 @@ func maxArea(height []int) int {
 }
 
 func TestMaxArea(t *testing.T) {
-	testCases := []struct {
-		in   []int
-		want int
-	}{
-		{in: []int{1, 8, 6, 2, 5, 4, 8, 3, 7}, want: 49},
-		{in: []int{1, 1}, want: 1},
-		{in: []int{0}, want: 0},
-		{in: []int{1, 2, 1}, want: 2},
-		{in: []int{1, 2, 4, 3}, want: 4},
-		{in: []int{2, 3, 4, 5, 18, 17, 6}, want: 17},
-		{in: []int{0, 14, 6, 2, 10, 9, 4, 1, 10, 3}, want: 70},
-	}
 	// Array of 10000 ones
-	var ones = struct {
-		in   []int
-		want int
-	}{in: make([]int, 10000), want: 9999}
-	for i := range ones.in {
-		ones.in[i] = 1
+	ones := make([]int, 10000)
+	for i := range ones {
+		ones[i] = 1
 	}
-	testCases = append(testCases, ones)
+	testCases := []struct {
+		height []int
+		want   int
+	}{
+		{height: []int{1, 8, 6, 2, 5, 4, 8, 3, 7}, want: 49},
+		{height: []int{1, 1}, want: 1},
+		{height: []int{0}, want: 0},
+		{height: []int{1, 2, 1}, want: 2},
+		{height: []int{1, 2, 4, 3}, want: 4},
+		{height: []int{2, 3, 4, 5, 18, 17, 6}, want: 17},
+		{height: []int{0, 14, 6, 2, 10, 9, 4, 1, 10, 3}, want: 70},
+		{height: ones, want: 9999},
+	}
 	for _, tc := range testCases {
 		t.Run("11. Container With Most Water", func(t *testing.T) {
-			out := maxArea(tc.in)
+			out := maxArea(tc.height)
 			if out != tc.want {
-				t.Errorf("maxArea(%v) = %v, want: %v", tc.in, out, tc.want)
+				t.Errorf("maxArea(%v) = %v, want: %v", tc.height, out, tc.want)
 			}
 		})
 	}

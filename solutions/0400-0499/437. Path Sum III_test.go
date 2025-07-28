@@ -99,21 +99,21 @@ func subSum(node *structures.TreeNode, target int) int {
 
 func TestPathSum(t *testing.T) {
 	testCases := []struct {
-		in        []any
-		targetSum int
-		want      int
+		node   []any
+		target int
+		want   int
 	}{
-		{in: []any{10, 5, -3, 3, 2, nil, 11, 3, -2, nil, 1}, targetSum: 8, want: 3},
-		{in: []any{5, 4, 8, 11, nil, 13, 4, 7, 2, nil, nil, 5, 1}, targetSum: 22, want: 3},
-		{in: []any{}, targetSum: 1, want: 0},
-		{in: []any{-2, nil, -3}, targetSum: -5, want: 1},
-		{in: []any{1, -2, -3, 1, 3, -2, nil, -1}, targetSum: -1, want: 4},
+		{node: []any{10, 5, -3, 3, 2, nil, 11, 3, -2, nil, 1}, target: 8, want: 3},
+		{node: []any{5, 4, 8, 11, nil, 13, 4, 7, 2, nil, nil, 5, 1}, target: 22, want: 3},
+		{node: []any{}, target: 1, want: 0},
+		{node: []any{-2, nil, -3}, target: -5, want: 1},
+		{node: []any{1, -2, -3, 1, 3, -2, nil, -1}, target: -1, want: 4},
 	}
 	for _, tc := range testCases {
 		t.Run("437. Path Sum III", func(t *testing.T) {
-			out := pathSum(structures.NewTree(tc.in), tc.targetSum)
+			out := pathSum(structures.NewTree(tc.node), tc.target)
 			if out != tc.want {
-				t.Errorf("pathSum(%v, %v) = %v, want: %v", tc.in, tc.targetSum, out, tc.want)
+				t.Errorf("pathSum(%v, %v) = %v, want: %v", tc.node, tc.target, out, tc.want)
 			}
 		})
 	}

@@ -67,18 +67,18 @@ func maxDepth(root *structures.TreeNode) int {
 
 func TestMaxDepth(t *testing.T) {
 	testCases := []struct {
-		in   []any
+		root []any
 		want int
 	}{
-		{in: []any{3, 9, 20, nil, nil, 15, 7}, want: 3},
-		{in: []any{1, nil, 2}, want: 2},
-		{in: []any{}, want: 0},
+		{root: []any{3, 9, 20, nil, nil, 15, 7}, want: 3},
+		{root: []any{1, nil, 2}, want: 2},
+		{root: []any{}, want: 0},
 	}
 	for _, tc := range testCases {
 		t.Run("104. Maximum Depth of Binary Tree", func(t *testing.T) {
-			out := maxDepth(structures.NewTree(tc.in))
+			out := maxDepth(structures.NewTree(tc.root))
 			if out != tc.want {
-				t.Errorf("maxDepth(%v) = %v, want: %v", tc.in, out, tc.want)
+				t.Errorf("maxDepth(%v) = %v, want: %v", tc.root, out, tc.want)
 			}
 		})
 	}

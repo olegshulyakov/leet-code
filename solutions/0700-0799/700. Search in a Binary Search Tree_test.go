@@ -71,16 +71,16 @@ func searchBST(root *structures.TreeNode, val int) *structures.TreeNode {
 
 func TestDeleteNode(t *testing.T) {
 	testCases := []struct {
-		nums []any
+		root []any
 		val  int
 		want []any
 	}{
-		{nums: []any{4, 2, 7, 1, 3}, val: 2, want: []any{2, 1, 3}},
-		{nums: []any{4, 2, 7, 1, 3}, val: 5, want: []any{}},
+		{root: []any{4, 2, 7, 1, 3}, val: 2, want: []any{2, 1, 3}},
+		{root: []any{4, 2, 7, 1, 3}, val: 5, want: []any{}},
 	}
 	for _, tc := range testCases {
 		t.Run("700. Search in a Binary Search Tree", func(t *testing.T) {
-			root := structures.NewTree(tc.nums)
+			root := structures.NewTree(tc.root)
 
 			newRoot := searchBST(root, tc.val)
 			out := newRoot.ToArray()

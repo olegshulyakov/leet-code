@@ -105,19 +105,19 @@ func predictPartyVictory(senate string) string {
 
 func TestPredictPartyVictory(t *testing.T) {
 	testCases := []struct {
-		in   string
-		want string
+		senate string
+		want   string
 	}{
-		{in: "RD", want: "Radiant"},
-		{in: "RDD", want: "Dire"},
-		{in: "DDRRR", want: "Dire"},
-		{in: "RRR", want: "Radiant"},
+		{senate: "RD", want: "Radiant"},
+		{senate: "RDD", want: "Dire"},
+		{senate: "DDRRR", want: "Dire"},
+		{senate: "RRR", want: "Radiant"},
 	}
 	for _, tc := range testCases {
 		t.Run("649. Dota2 Senate", func(t *testing.T) {
-			out := predictPartyVictory(tc.in)
+			out := predictPartyVictory(tc.senate)
 			if out != tc.want {
-				t.Errorf("predictPartyVictory(%v) = %v, expected %v", tc.in, out, tc.want)
+				t.Errorf("predictPartyVictory(%v) = %v, expected %v", tc.senate, out, tc.want)
 			}
 		})
 	}

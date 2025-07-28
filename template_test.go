@@ -22,13 +22,13 @@ func fun(s []string) []string {
 // It defines test cases and iterates through them to verify correct behavior.
 func Test(t *testing.T) {
 	testCases := []struct {
-		in, want []string
+		s, want []string
 	}{
 		{[]string{}, []string{}},
 	}
 	for _, tc := range testCases {
 		t.Run("Test", func(t *testing.T) {
-			out := fun(tc.in)
+			out := fun(tc.s)
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
 			}

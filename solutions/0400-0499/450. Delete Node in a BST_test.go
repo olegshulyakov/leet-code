@@ -117,19 +117,19 @@ func deleteNode(root *structures.TreeNode, key int) *structures.TreeNode {
 
 func TestDeleteNode(t *testing.T) {
 	testCases := []struct {
-		nums []any
+		root []any
 		key  int
 		want []any
 	}{
-		{nums: []any{}, key: 0, want: []any{}},
-		{nums: []any{5, 3, 6, 2, 4, nil, 7}, key: 0, want: []any{5, 3, 6, 2, 4, nil, 7}},
-		{nums: []any{5, 3, 6, 2, 4, nil, 7}, key: 3, want: []any{5, 4, 6, 2, nil, nil, 7}},
-		{nums: []any{0}, key: 0, want: []any{}},
-		{nums: []any{50, 30, 70, nil, 40, 60, 80}, key: 50, want: []any{60, 30, 70, nil, 40, nil, 80}},
+		{root: []any{}, key: 0, want: []any{}},
+		{root: []any{5, 3, 6, 2, 4, nil, 7}, key: 0, want: []any{5, 3, 6, 2, 4, nil, 7}},
+		{root: []any{5, 3, 6, 2, 4, nil, 7}, key: 3, want: []any{5, 4, 6, 2, nil, nil, 7}},
+		{root: []any{0}, key: 0, want: []any{}},
+		{root: []any{50, 30, 70, nil, 40, 60, 80}, key: 50, want: []any{60, 30, 70, nil, 40, nil, 80}},
 	}
 	for _, tc := range testCases {
 		t.Run("450. Delete Node in a BST", func(t *testing.T) {
-			root := structures.NewTree(tc.nums)
+			root := structures.NewTree(tc.root)
 
 			newRoot := deleteNode(root, tc.key)
 			out := newRoot.ToArray()

@@ -111,20 +111,20 @@ func checkSubTree(root *structures.TreeNode, maxValue int) int {
 
 func TestGoodNodes(t *testing.T) {
 	testCases := []struct {
-		in   []any
+		root []any
 		want int
 	}{
-		{in: []any{3, 1, 4, 3, nil, 1, 5}, want: 4},
-		{in: []any{3, 3, nil, 4, 2}, want: 3},
-		{in: []any{1}, want: 1},
-		{in: []any{9, nil, 3, 6}, want: 1},
+		{root: []any{3, 1, 4, 3, nil, 1, 5}, want: 4},
+		{root: []any{3, 3, nil, 4, 2}, want: 3},
+		{root: []any{1}, want: 1},
+		{root: []any{9, nil, 3, 6}, want: 1},
 	}
 	for _, tc := range testCases {
 		t.Run("1448. Count Good Nodes in Binary Tree", func(t *testing.T) {
-			out := goodNodes(structures.NewTree(tc.in))
+			out := goodNodes(structures.NewTree(tc.root))
 
 			if out != tc.want {
-				t.Errorf("goodNodes(%v) = %v, want: %v", tc.in, out, tc.want)
+				t.Errorf("goodNodes(%v) = %v, want: %v", tc.root, out, tc.want)
 			}
 		})
 	}

@@ -119,18 +119,18 @@ func longestZigZag(root *structures.TreeNode) int {
 
 func TestLongestZigZag(t *testing.T) {
 	testCases := []struct {
-		in   []any
+		root []any
 		want int
 	}{
-		{in: []any{1, nil, 1, 1, 1, nil, nil, 1, 1, nil, 1, nil, nil, nil, 1}, want: 3},
-		{in: []any{1, 1, 1, nil, 1, nil, nil, 1, 1, nil, 1}, want: 4},
-		{in: []any{1}, want: 0},
+		{root: []any{1, nil, 1, 1, 1, nil, nil, 1, 1, nil, 1, nil, nil, nil, 1}, want: 3},
+		{root: []any{1, 1, 1, nil, 1, nil, nil, 1, 1, nil, 1}, want: 4},
+		{root: []any{1}, want: 0},
 	}
 	for _, tc := range testCases {
 		t.Run("1372. Longest ZigZag Path in a Binary Tree", func(t *testing.T) {
-			out := longestZigZag(structures.NewTree(tc.in))
+			out := longestZigZag(structures.NewTree(tc.root))
 			if out != tc.want {
-				t.Errorf("longestZigZag(%v) = %v, want: %v", tc.in, out, tc.want)
+				t.Errorf("longestZigZag(%v) = %v, want: %v", tc.root, out, tc.want)
 			}
 		})
 	}

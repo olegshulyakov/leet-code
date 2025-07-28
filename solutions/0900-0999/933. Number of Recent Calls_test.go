@@ -84,15 +84,15 @@ func (rc *RecentCounter) Ping(t int) int {
 
 func TestRecentCounter(t *testing.T) {
 	testCases := []struct {
-		in   []int
+		t    []int
 		want []int
 	}{
-		{in: []int{1, 100, 3001, 3002}, want: []int{1, 2, 3, 3}},
+		{t: []int{1, 100, 3001, 3002}, want: []int{1, 2, 3, 3}},
 	}
 	for _, tc := range testCases {
 		t.Run("933. Number of Recent Calls", func(t *testing.T) {
 			recentCounter := Constructor()
-			for i, timer := range tc.in {
+			for i, timer := range tc.t {
 				out := recentCounter.Ping(timer)
 				if out != tc.want[i] {
 					t.Errorf("Ping(%d) = %v, want: %v", timer, out, tc.want)

@@ -71,18 +71,18 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 
 func TestCanPlaceFlowers(t *testing.T) {
 	testCases := []struct {
-		in   []int
-		n    int
-		want bool
+		flowerbed []int
+		n         int
+		want      bool
 	}{
-		{in: []int{1, 0, 0, 0, 1}, n: 1, want: true},
-		{in: []int{1, 0, 0, 0, 1}, n: 2, want: false},
+		{flowerbed: []int{1, 0, 0, 0, 1}, n: 1, want: true},
+		{flowerbed: []int{1, 0, 0, 0, 1}, n: 2, want: false},
 	}
 	for _, tc := range testCases {
 		t.Run("605. Can Place Flowers", func(t *testing.T) {
-			out := canPlaceFlowers(tc.in, tc.n)
+			out := canPlaceFlowers(tc.flowerbed, tc.n)
 			if out != tc.want {
-				t.Errorf("canPlaceFlowers(%v, %d) = %v, want: %v", tc.in, tc.n, out, tc.want)
+				t.Errorf("canPlaceFlowers(%v, %d) = %v, want: %v", tc.flowerbed, tc.n, out, tc.want)
 			}
 		})
 	}
