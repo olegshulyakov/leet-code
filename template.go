@@ -36,7 +36,7 @@ func Test(t *testing.T) {
 		{[]string{}, []string{}},
 	}
 	for _, tc := range testcases {
-		name := fmt.Sprintf("Example: %s", strings.Join(tc.in, ", "))
+		name := fmt.Sprintf("Test: %s", strings.Join(tc.in, ", "))
 		t.Run(name, func(t *testing.T) {
 			t.Logf("fun: in=%v", tc.in)
 			out := fun(tc.in)
