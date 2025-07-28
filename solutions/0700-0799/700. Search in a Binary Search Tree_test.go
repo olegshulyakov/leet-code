@@ -80,11 +80,9 @@ func TestDeleteNode(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("700. Search in a Binary Search Tree", func(t *testing.T) {
-			t.Logf("Search in a Binary Search Tree: nums=%d, key=%d", tc.nums, tc.val)
 			root := structures.NewTree(tc.nums)
 
 			newRoot := searchBST(root, tc.val)
-			t.Logf("Search in a Binary Search Tree: root:\n%v, newRoot:\n%v", root.Print(), newRoot.Print())
 			out := newRoot.ToArray()
 			if len(out) != len(tc.want) {
 				t.Errorf("len(out) = %v, want: %v", len(out), len(tc.want))

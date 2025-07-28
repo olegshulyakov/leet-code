@@ -85,7 +85,7 @@ func lowestCommonAncestor(root, p, q *structures.TreeNode) *structures.TreeNode 
 }
 
 func TestLowestCommonAncestor(t *testing.T) {
-	testcases := []struct {
+	testCases := []struct {
 		in   []any
 		p    int
 		q    int
@@ -95,9 +95,8 @@ func TestLowestCommonAncestor(t *testing.T) {
 		{in: []any{3, 5, 1, 6, 2, 0, 8, nil, nil, 7, 4}, p: 5, q: 4, want: 5},
 		{in: []any{1, 2}, p: 1, q: 2, want: 1},
 	}
-	for _, tc := range testcases {
+	for _, tc := range testCases {
 		t.Run("236. Lowest Common Ancestor of a Binary Tree", func(t *testing.T) {
-			t.Logf("lowestCommonAncestor: in=%v", tc.in)
 			out := lowestCommonAncestor(structures.NewTree(tc.in), &structures.TreeNode{Val: tc.p}, &structures.TreeNode{Val: tc.q})
 			if out.Val != tc.want {
 				t.Errorf("lowestCommonAncestor(%v,%v,%v) = %v, want: %v", tc.in, tc.p, tc.q, out.Val, tc.want)

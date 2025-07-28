@@ -129,11 +129,9 @@ func TestDeleteNode(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("450. Delete Node in a BST", func(t *testing.T) {
-			t.Logf("Delete Node in a BST: nums=%d, key=%d", tc.nums, tc.key)
 			root := structures.NewTree(tc.nums)
 
 			newRoot := deleteNode(root, tc.key)
-			t.Logf("Delete Node in a BST: root:\n%v, newRoot:\n%v", root.Print(), newRoot.Print())
 			out := newRoot.ToArray()
 			if len(out) != len(tc.want) {
 				t.Errorf("len(out) = %v, want: %v", len(out), len(tc.want))

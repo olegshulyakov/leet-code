@@ -104,7 +104,7 @@ func maxLevelSum(root *structures.TreeNode) int {
 }
 
 func TestMaxLevelSum(t *testing.T) {
-	testcases := []struct {
+	testCases := []struct {
 		in   []any
 		want int
 	}{
@@ -113,9 +113,8 @@ func TestMaxLevelSum(t *testing.T) {
 		{in: []any{}, want: 0},
 		{in: []any{1}, want: 1},
 	}
-	for _, tc := range testcases {
+	for _, tc := range testCases {
 		t.Run("1161. Maximum Level Sum of a Binary Tree", func(t *testing.T) {
-			t.Logf("maxLevelSum: in=%v", tc.in)
 			out := maxLevelSum(structures.NewTree(tc.in))
 			if out != tc.want {
 				t.Errorf("maxLevelSum(%v) = %v, want: %v", tc.in, out, tc.want)

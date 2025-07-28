@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"strings"
 	"testing"
 )
 
@@ -23,15 +21,13 @@ func fun(s []string) []string {
 // Test validates the functionality of the fun function using table-driven tests.
 // It defines test cases and iterates through them to verify correct behavior.
 func Test(t *testing.T) {
-	testcases := []struct {
+	testCases := []struct {
 		in, want []string
 	}{
 		{[]string{}, []string{}},
 	}
-	for _, tc := range testcases {
-		name := fmt.Sprintf("Test: %s", strings.Join(tc.in, ", "))
-		t.Run(name, func(t *testing.T) {
-			t.Logf("fun: in=%v", tc.in)
+	for _, tc := range testCases {
+		t.Run("Test", func(t *testing.T) {
 			out := fun(tc.in)
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
