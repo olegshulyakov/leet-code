@@ -82,7 +82,7 @@ func compress(chars []byte) int {
 		if counter > 1 {
 			// Convert counter to individual digits and append each digit
 			countStr := strconv.Itoa(counter)
-			for j := 0; j < len(countStr); j++ {
+			for j := range len(countStr) {
 				compress = append(compress, countStr[j])
 			}
 		}
@@ -96,7 +96,7 @@ func compress(chars []byte) int {
 	compress = append(compress, lastCharacter)
 	if counter > 1 {
 		countStr := strconv.Itoa(counter)
-		for j := 0; j < len(countStr); j++ {
+		for j := range len(countStr) {
 			compress = append(compress, countStr[j])
 		}
 	}

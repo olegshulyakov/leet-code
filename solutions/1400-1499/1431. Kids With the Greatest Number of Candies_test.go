@@ -55,7 +55,7 @@ n == candies.length
 func kidsWithCandies(candies []int, extraCandies int) []bool {
 	// Find the maximum number of candies any kid currently has
 	maximum := 0
-	for i := 0; i < len(candies); i++ {
+	for i := range candies {
 		if candies[i] > maximum {
 			maximum = candies[i]
 		}

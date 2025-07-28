@@ -39,7 +39,7 @@
       "command": "golangci-lint",
       "args": ["run", "--fix", "./..."],
       "group": "build",
-      "problemMatcher": ["$golangci-lint"],
+      "problemMatcher": [],
       "detail": "Run golangci-lint for static code analysis.",
       "dependsOn": ["go: build"]
     },

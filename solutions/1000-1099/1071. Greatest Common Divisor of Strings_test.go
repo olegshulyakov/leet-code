@@ -88,7 +88,7 @@ func gcdOfStrings(str1, str2 string) string {
 	var res string
 
 	// Iterate through all possible prefixes of the shorter string
-	for i := 0; i < len(t); i++ {
+	for i := range len(t) {
 		// Create test string as prefix of 't' from index 0 to i+1
 		test := t[:i+1]
 
