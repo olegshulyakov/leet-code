@@ -25,9 +25,11 @@ func Test(t *testing.T) {
 		s, want []string
 	}{
 		{[]string{}, []string{}},
+		{[]string{"a", "b", "c"}, []string{"a", "b", "c"}},
 	}
 	for _, tc := range testCases {
 		t.Run("Test", func(t *testing.T) {
+			t.Logf("fun(%v)", tc.s)
 			out := fun(tc.s)
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
