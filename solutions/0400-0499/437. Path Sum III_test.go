@@ -98,6 +98,7 @@ func subSum(node *structures.TreeNode, target int) int {
 }
 
 func TestPathSum(t *testing.T) {
+	name := "437. Path Sum III"
 	testCases := []struct {
 		node   []any
 		target int
@@ -110,7 +111,7 @@ func TestPathSum(t *testing.T) {
 		{node: []any{1, -2, -3, 1, 3, -2, nil, -1}, target: -1, want: 4},
 	}
 	for _, tc := range testCases {
-		t.Run("437. Path Sum III", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := pathSum(structures.NewTree(tc.node), tc.target)
 			if out != tc.want {
 				t.Errorf("pathSum(%v, %v) = %v, want: %v", tc.node, tc.target, out, tc.want)

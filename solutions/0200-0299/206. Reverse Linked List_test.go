@@ -57,6 +57,7 @@ func reverseList(head *structures.ListNode) *structures.ListNode {
 }
 
 func TestReverseList(t *testing.T) {
+	const name = "206. Reverse Linked List"
 	testCases := []struct {
 		nums []int
 		want []int
@@ -67,7 +68,7 @@ func TestReverseList(t *testing.T) {
 		{[]int{1}, []int{1}},
 	}
 	for _, tc := range testCases {
-		t.Run("206. Reverse Linked List", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := reverseList(structures.NewLinkedList(tc.nums)).ToArray()
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))

@@ -111,6 +111,7 @@ func compress(chars []byte) int {
 }
 
 func TestCompress(t *testing.T) {
+	name := "443. String Compression"
 	testCases := []struct {
 		chars []byte
 		want  int
@@ -120,7 +121,7 @@ func TestCompress(t *testing.T) {
 		{chars: []byte{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'}, want: 4},
 	}
 	for _, tc := range testCases {
-		t.Run("443. String Compression", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := compress(tc.chars)
 
 			if out != tc.want {

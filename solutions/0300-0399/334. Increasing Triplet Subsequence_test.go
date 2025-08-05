@@ -81,6 +81,7 @@ func increasingTriplet(nums []int) bool {
 }
 
 func TestIncreasingTriplet(t *testing.T) {
+	const name = "334. Increasing Triplet Subsequence"
 	testCases := []struct {
 		nums []int
 		want bool
@@ -96,7 +97,7 @@ func TestIncreasingTriplet(t *testing.T) {
 		{nums: make([]int, 50), want: false}, // Array of 50 zeros
 	}
 	for _, tc := range testCases {
-		t.Run("334. Increasing Triplet Subsequence", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := increasingTriplet(tc.nums)
 			if out != tc.want {
 				t.Errorf("increasingTriplet(%v) = %v, want: %v", tc.nums, out, tc.want)

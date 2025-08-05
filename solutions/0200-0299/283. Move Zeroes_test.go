@@ -68,6 +68,7 @@ func moveZeroes(nums []int) {
 }
 
 func TestMoveZeroes(t *testing.T) {
+	const name = "283. Move Zeroes"
 	testCases := []struct {
 		nums []int
 		want []int
@@ -76,7 +77,7 @@ func TestMoveZeroes(t *testing.T) {
 		{nums: []int{0}, want: []int{0}},
 	}
 	for _, tc := range testCases {
-		t.Run("283. Move Zeroes", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := make([]int, len(tc.nums))
 			copy(out, tc.nums)
 

@@ -77,12 +77,13 @@ func reverseVowels(s string) string {
 }
 
 func TestReverseVowels(t *testing.T) {
+	name := "345. Reverse Vowels of a String"
 	testCases := []struct{ s, want string }{
 		{s: "IceCreAm", want: "AceCreIm"},
 		{s: "leetcode", want: "leotcede"},
 	}
 	for _, tc := range testCases {
-		t.Run("345. Reverse Vowels of a String", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := reverseVowels(tc.s)
 			if out != tc.want {
 				t.Errorf("reverseVowels(%v) = %v, want: %v", tc.s, out, tc.want)

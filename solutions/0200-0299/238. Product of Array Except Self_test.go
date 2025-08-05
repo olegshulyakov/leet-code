@@ -86,13 +86,14 @@ func productExceptSelf(nums []int) []int {
 }
 
 func TestProductExceptSelf(t *testing.T) {
+	const name = "238. Product of Array Except Self"
 	testCases := []struct{ nums, want []int }{
 		{nums: []int{1, 2, 3, 4}, want: []int{24, 12, 8, 6}},
 		{nums: []int{-1, 1, 0, -3, 3}, want: []int{0, 0, 9, 0, 0}},
 		{nums: []int{-1, 1, 0, 0, 3}, want: []int{0, 0, 0, 0, 0}},
 	}
 	for _, tc := range testCases {
-		t.Run("238. Product of Array Except Self", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := productExceptSelf(tc.nums)
 
 			if len(out) != len(tc.want) {

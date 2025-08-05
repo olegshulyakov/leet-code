@@ -71,6 +71,7 @@ func rightSideView(root *structures.TreeNode) []int {
 }
 
 func TestRightSideView(t *testing.T) {
+	const name = "199. Binary Tree Right Side View"
 	testCases := []struct {
 		root []any
 		want []int
@@ -82,7 +83,7 @@ func TestRightSideView(t *testing.T) {
 		{root: []any{1, 2, 3, 4}, want: []int{1, 3, 4}},
 	}
 	for _, tc := range testCases {
-		t.Run("199. Binary Tree Right Side View", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := rightSideView(structures.NewTree(tc.root))
 			if len(out) != len(tc.want) {
 				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))

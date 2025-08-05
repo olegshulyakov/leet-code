@@ -21,6 +21,7 @@ func fun(s []string) []string {
 // Test validates the functionality of the fun function using table-driven tests.
 // It defines test cases and iterates through them to verify correct behavior.
 func Test(t *testing.T) {
+	const name = "Test"
 	testCases := []struct {
 		s, want []string
 	}{
@@ -28,7 +29,7 @@ func Test(t *testing.T) {
 		{[]string{"a", "b", "c"}, []string{"a", "b", "c"}},
 	}
 	for _, tc := range testCases {
-		t.Run("Test", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			t.Logf("fun(%v)", tc.s)
 			out := fun(tc.s)
 			if len(out) != len(tc.want) {

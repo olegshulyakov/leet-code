@@ -63,6 +63,7 @@ func decodeString(s string) string {
 }
 
 func TestDecodeString(t *testing.T) {
+	name := "394. Decode String"
 	testCases := []struct {
 		s    string
 		want string
@@ -73,7 +74,7 @@ func TestDecodeString(t *testing.T) {
 		{"ef", "ef"},
 	}
 	for _, tc := range testCases {
-		t.Run("394. Decode String", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := decodeString(tc.s)
 			if out != tc.want {
 				t.Errorf("decodeString(%v) = %v, want: %v", tc.s, out, tc.want)

@@ -73,6 +73,7 @@ func isSubsequence(s string, t string) bool {
 }
 
 func TestIsSubsequence(t *testing.T) {
+	name := "392. Is Subsequence"
 	testCases := []struct {
 		s    string
 		t    string
@@ -86,7 +87,7 @@ func TestIsSubsequence(t *testing.T) {
 		{s: "a", t: "a", want: true},
 	}
 	for _, tc := range testCases {
-		t.Run("392. Is Subsequence", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := isSubsequence(tc.s, tc.t)
 
 			if out != tc.want {

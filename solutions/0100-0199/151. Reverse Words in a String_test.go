@@ -69,13 +69,14 @@ func reverseWords(s string) string {
 }
 
 func TestReverseWords(t *testing.T) {
+	const name = "151. Reverse Words in a String"
 	testCases := []struct{ s, want string }{
 		{s: "the sky is blue", want: "blue is sky the"},
 		{s: "  hello world  ", want: "world hello"},
 		{s: "a good   example", want: "example good a"},
 	}
 	for _, tc := range testCases {
-		t.Run("151. Reverse Words in a String", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := reverseWords(tc.s)
 			if out != tc.want {
 				t.Errorf("reverseWords(%v) = %v, want %v", tc.s, out, tc.want)

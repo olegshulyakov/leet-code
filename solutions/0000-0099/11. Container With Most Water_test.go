@@ -82,6 +82,7 @@ func maxArea(height []int) int {
 }
 
 func TestMaxArea(t *testing.T) {
+	const name = "11. Container With Most Water"
 	// Array of 10000 ones
 	ones := make([]int, 10000)
 	for i := range ones {
@@ -101,7 +102,7 @@ func TestMaxArea(t *testing.T) {
 		{height: ones, want: 9999},
 	}
 	for _, tc := range testCases {
-		t.Run("11. Container With Most Water", func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			out := maxArea(tc.height)
 			if out != tc.want {
 				t.Errorf("maxArea(%v) = %v, want: %v", tc.height, out, tc.want)
