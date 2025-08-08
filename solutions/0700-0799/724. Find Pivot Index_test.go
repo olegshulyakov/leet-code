@@ -1,3 +1,7 @@
+package main
+
+import "testing"
+
 /*
 
 Given an array of integers nums, calculate the pivot index of this array.
@@ -44,31 +48,48 @@ Note: This question is the same as 1991: https://leetcode.com/problems/find-the-
 
 */
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var pivotIndex = function (nums) {
-    if (nums.length < 2) return 0;
+func pivotIndex(nums []int) int {
+	if len(nums) < 2 {
+		return 0
+	}
 
-    let left = 0;
-    let right = nums.reduce((acc, current) => acc + current);
-    for (let i = 0; i < nums.length; i++) {
-        right = right - nums[i];
-        if (left === right) {
-            return i;
-        }
-        left = left + nums[i];
-    }
+	left := 0
+	right := 0
 
-    return -1;
-};
+	// Calculate total sum
+	for _, num := range nums {
+		right += num
+	}
 
-describe('724. Find Pivot Index', () => {
-    test.each([
-        { nums: [1, 7, 3, 6, 5, 6], expected: 3 },
-        { nums: [1, 2, 3], expected: -1 },
-        { nums: [2, 1, -1], expected: 0 },
-        { nums: [], expected: 0 },
-    ])('$nums', ({ nums, expected }) => expect(pivotIndex(nums)).toEqual(expected));
-})
+	for i := range nums {
+		right -= nums[i]
+		if left == right {
+			return i
+		}
+		left += nums[i]
+	}
+
+	return -1
+}
+
+func TestPivotIndex(t *testing.T) {
+	const name = "724. Find Pivot Index"
+	testCases := []struct {
+		nums []int
+		want int
+	}{
+		{[]int{1, 7, 3, 6, 5, 6}, 3},
+		{[]int{1, 2, 3}, -1},
+		{[]int{2, 1, -1}, 0},
+		{[]int{}, 0},
+	}
+
+	for _, tc := range testCases {
+		t.Run(name, func(t *testing.T) {
+			out := pivotIndex(tc.nums)
+			if out != tc.want {
+				t.Errorf("pivotIndex(%v) = %d; expected %d", tc.nums, out, tc.want)
+			}
+		})
+	}
+}
