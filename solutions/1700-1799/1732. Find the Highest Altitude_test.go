@@ -1,3 +1,7 @@
+package main
+
+import "testing"
+
 /*
 
 There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with altitude equal 0.
@@ -26,22 +30,36 @@ n == gain.length
 
 */
 
-/**
- * @param {number[]} gain
- * @return {number}
- */
-var largestAltitude = function (gain) {
-    let res = altitude = 0;
-    for (let i = 0; i < gain.length; i++) {
-        altitude = altitude + gain[i];
-        res = res > altitude ? res : altitude;
-    }
-    return res;
-};
+func largestAltitude(gain []int) int {
+	res := 0
+	altitude := 0
 
-describe('1732. Find the Highest Altitude', () => {
-    test.each([
-        { gain: [-5, 1, 5, 0, -7], expected: 1 },
-        { gain: [-4, -3, -2, -1, 4, 3, 2], expected: 0 },
-    ])('$gain', ({ gain, expected }) => expect(largestAltitude(gain)).toEqual(expected));
-})
+	for _, g := range gain {
+		altitude += g
+		if altitude > res {
+			res = altitude
+		}
+	}
+
+	return res
+}
+
+func TestLargestAltitude(t *testing.T) {
+	const name = "1732. Find the Highest Altitude"
+	testCases := []struct {
+		gain []int
+		want int
+	}{
+		{[]int{-5, 1, 5, 0, -7}, 1},
+		{[]int{-4, -3, -2, -1, 4, 3, 2}, 0},
+	}
+
+	for _, tc := range testCases {
+		t.Run(name, func(t *testing.T) {
+			out := largestAltitude(tc.gain)
+			if out != tc.want {
+				t.Errorf("largestAltitude(%v) = %d; expected %d", tc.gain, out, tc.want)
+			}
+		})
+	}
+}
