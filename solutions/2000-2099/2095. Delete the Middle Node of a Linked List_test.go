@@ -82,7 +82,7 @@ func deleteMiddle(head *structures.ListNode) *structures.ListNode {
 	return head
 }
 
-func Test(t *testing.T) {
+func TestDeleteMiddle(t *testing.T) {
 	const name = "2095. Delete the Middle Node of a Linked List"
 	testCases := []struct {
 		nums []int
@@ -98,7 +98,7 @@ func Test(t *testing.T) {
 			t.Logf("deleteMiddle(%v)", tc.nums)
 			out := deleteMiddle(structures.NewLinkedList(tc.nums)).ToArray()
 			if len(out) != len(tc.want) {
-				t.Errorf("len(deleteMiddle() = %v, want: %v", len(out), len(tc.want))
+				t.Errorf("len(deleteMiddle(%v) = %v, want: %v", tc.nums, len(out), len(tc.want))
 			}
 			for i := range out {
 				if out[i] != tc.want[i] {

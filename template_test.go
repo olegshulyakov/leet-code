@@ -33,7 +33,7 @@ func Test(t *testing.T) {
 			t.Logf("fun(%v)", tc.s)
 			out := fun(tc.s)
 			if len(out) != len(tc.want) {
-				t.Errorf("len(fun() = %v, want: %v", len(out), len(tc.want))
+				t.Errorf("len(fun(%v) = %v, want: %v", tc.s, len(out), len(tc.want))
 			}
 			for i := range out {
 				if out[i] != tc.want[i] {

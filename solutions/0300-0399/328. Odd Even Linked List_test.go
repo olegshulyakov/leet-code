@@ -68,7 +68,7 @@ func oddEvenList(head *structures.ListNode) *structures.ListNode {
 	return head
 }
 
-func Test(t *testing.T) {
+func TestOddEvenList(t *testing.T) {
 	const name = "328. Odd Even Linked List"
 	testCases := []struct {
 		nums []int
