@@ -1,41 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
 func equalPairs(grid [][]int) int {
-	var rows [][]int
-	var cols [][]int
-	for i := range grid {
-		var row []int
-		var column []int
-		for j := range grid {
-			row = append(row, grid[i][j])
-			column = append(column, grid[j][i])
-		}
-		rows = append(rows, row)
-		cols = append(cols, column)
+	rowMap := make(map[string]int)
+	for _, row := range grid {
+		rowStr := fmt.Sprint(row)
+        rowMap[rowStr]++
 	}
 
 	pairCnt := 0
-	for _, row := range rows {
-		for _, col := range cols {
-			if len(row) != len(col) {
-				continue
-			}
-			var isEqual = true
-			for i := range row {
-				if row[i] != col[i] {
-					isEqual = false
-					break
-				}
-			}
-			if !isEqual {
-				continue
-			}
-			pairCnt++
+	for i := range grid {
+		column := make([]int, len(grid))
+		for j := range grid {
+			column[j] = grid[j][i]
 		}
+		colStr := fmt.Sprint(column)
+        pairCnt += rowMap[colStr]
 	}
 
 	return pairCnt
