@@ -9,7 +9,7 @@ func equalPairs(grid [][]int) int {
 	rowMap := make(map[string]int)
 	for _, row := range grid {
 		rowStr := fmt.Sprint(row)
-        rowMap[rowStr]++
+		rowMap[rowStr]++
 	}
 
 	pairCnt := 0
@@ -19,7 +19,7 @@ func equalPairs(grid [][]int) int {
 			column[j] = grid[j][i]
 		}
 		colStr := fmt.Sprint(column)
-        pairCnt += rowMap[colStr]
+		pairCnt += rowMap[colStr]
 	}
 
 	return pairCnt
