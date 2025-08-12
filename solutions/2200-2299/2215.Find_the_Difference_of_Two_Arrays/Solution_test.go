@@ -51,7 +51,7 @@ func TestFindDifference(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		t.Run("", func(t *testing.T) {
+		t.Run("2215. Find the Difference of Two Arrays", func(t *testing.T) {
 			out := findDifference(tc.nums1, tc.nums2)
 
 			if len(out) != len(tc.want) {

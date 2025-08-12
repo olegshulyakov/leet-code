@@ -35,7 +35,7 @@ func TestEqualPairs(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		t.Run("", func(t *testing.T) {
+		t.Run("2352. Equal Row and Column Pairs", func(t *testing.T) {
 			result := equalPairs(tc.grid)
 			if result != tc.want {
 				t.Errorf("equalPairs(%v) = %d; expected %d", tc.grid, result, tc.want)
